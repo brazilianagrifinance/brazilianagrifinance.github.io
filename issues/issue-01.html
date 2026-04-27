@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Real's Rally Is Reshaping Brazil's Origination Calendar — BAFI Issue 01</title>
+
+<!-- SEO -->
+<meta name="description" content="A currency move the market didn't see coming is quietly rewriting the economics of the world's most important soybean export season. Brazilian Agri Finance Intelligence, Issue 01.">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / LinkedIn / WhatsApp previews -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Real's Rally Is Reshaping Brazil's Origination Calendar">
+<meta property="og:description" content="Brazil is harvesting a record 179 mt soy crop. The volume numbers look fine. The flow beneath them doesn't. BAFI Issue 01.">
+<meta property="og:url" content="https://brazilianagrifinance.github.io/issues/issue-01.html">
+<meta property="og:site_name" content="Brazilian Agri Finance Intelligence">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter/X card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Real's Rally Is Reshaping Brazil's Origination Calendar">
+<meta name="twitter:description" content="Brazil's record soy crop. A real nobody priced in. ~90mt still unpriced. BAFI Issue 01 — for allocators who need the layer beneath the headlines.">
+
+<!-- Canonical -->
+<link rel="canonical" href="https://brazilianagrifinance.github.io/issues/issue-01.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* BAFI proprietary palette */
+    --soil:      #2B2318;   /* deep brown-black — primary text, headers */
+    --clay:      #6B4F35;   /* warm brown — secondary text, muted labels */
+    --straw:     #F2EBD9;   /* light warm cream — background */
+    --husk:      #DDD3BC;   /* mid cream — borders, dividers, chart tracks */
+    --field:     #E8E0CC;   /* subtle cream — card backgrounds */
+    --cerrado:   #3A6B4A;   /* forest green — positive deltas, growth */
+    --harvest:   #B85C1A;   /* burnt orange — accent, alerts, down moves */
+    --harvest-lt:#F5E3D5;   /* harvest tint — alert backgrounds */
+    --river:     #1E4D6B;   /* deep teal-blue — charts, data primary */
+    --river-lt:  #D4E4EE;   /* river tint — chart backgrounds */
+    --gold:      #8C6D1F;   /* dark gold — secondary accent */
+    --gold-lt:   #F5EDD4;   /* gold tint */
+
+    --sans: 'Barlow', system-ui, sans-serif;
+    --serif: 'Spectral', Georgia, serif;
+  }
+
+  body {
+    background: #C8C0B0;
+    font-family: var(--sans);
+    color: var(--soil);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 660px;
+    margin: 0 auto;
+    background: var(--straw);
+  }
+
+  /* ── HEADER ───────────────────────────────── */
+  .header {
+    background: var(--soil);
+    padding: 30px 48px 26px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .pub-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--straw);
+  }
+
+  .pub-name span { color: var(--harvest); }
+
+  .pub-issue {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    letter-spacing: 0.1em;
+  }
+
+  .header-tagline {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+    color: #7a6a55;
+    line-height: 1.5;
+  }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    padding: 40px 48px 32px;
+    border-bottom: 2px solid var(--soil);
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--soil);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-deck {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--clay);
+  }
+
+  /* ── BIG STATS ────────────────────────────── */
+  .big-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .big-stat {
+    padding: 26px 28px;
+    border-right: 1px solid var(--husk);
+  }
+
+  .big-stat:last-child { border-right: none; }
+  .big-stat:first-child {
+    background: var(--river);
+  }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .big-stat:first-child .stat-label { color: #5a8aaa; }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 42px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--soil);
+    letter-spacing: -0.03em;
+  }
+
+  .big-stat:first-child .stat-num { color: var(--straw); }
+
+  .stat-unit {
+    font-family: var(--sans);
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0;
+  }
+
+  .stat-delta {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .up   { color: var(--cerrado); }
+  .down { color: var(--harvest); }
+
+  .stat-note {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--clay);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .big-stat:first-child .stat-note { color: #5a8aaa; }
+
+  /* ── BODY ─────────────────────────────────── */
+  .body { padding: 38px 48px; }
+
+  .body p {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.82;
+    color: #2e2416;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--soil);
+    margin: 36px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── CHART BLOCK ──────────────────────────── */
+  .chart-block {
+    background: white;
+    border: 1px solid var(--husk);
+    margin: 26px 0;
+    overflow: hidden;
+  }
+
+  .chart-hed {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid var(--husk);
+    background: var(--field);
+  }
+
+  .chart-title {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soil);
+  }
+
+  .chart-note {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .chart-inner { padding: 18px 20px; }
+
+  .chart-src {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--clay);
+    padding: 7px 18px 9px;
+    border-top: 1px solid var(--husk);
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+  }
+
+  /* ── PULL QUOTE ───────────────────────────── */
+  .pull {
+    padding: 26px 30px;
+    border-left: 5px solid var(--soil);
+    background: var(--field);
+    margin: 28px 0;
+  }
+
+  .pull p {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--soil);
+    margin: 0;
+  }
+
+  .pull cite {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 12px;
+    font-style: normal;
+  }
+
+  /* ── INLINE FLOAT STAT ────────────────────── */
+  .float-stat {
+    float: right;
+    margin: 4px 0 20px 26px;
+    padding: 22px 20px;
+    background: var(--soil);
+    text-align: center;
+    width: 148px;
+    flex-shrink: 0;
+  }
+
+  .float-num {
+    font-family: var(--serif);
+    font-size: 54px;
+    font-weight: 600;
+    color: var(--straw);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .float-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b5a42;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .float-delta {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--harvest);
+    margin-top: 7px;
+  }
+
+  .cf::after { content: ''; display: table; clear: both; }
+
+  /* ── PACE BARS ────────────────────────────── */
+  .pace-wrap { display: flex; flex-direction: column; gap: 12px; }
+
+  .pace-row { display: flex; align-items: flex-start; gap: 12px; }
+
+  .pace-lbl {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--soil);
+    width: 74px;
+    flex-shrink: 0;
+    padding-top: 6px;
+  }
+
+  .pace-lbl.muted { font-weight: 300; color: var(--clay); }
+
+  .pace-track-wrap { flex: 1; }
+
+  .pace-track {
+    height: 26px;
+    background: var(--husk);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pace-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 9px;
+  }
+
+  .pace-val {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .pace-sub {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    margin-top: 3px;
+    font-style: italic;
+  }
+
+  .pace-tag-warn {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--harvest);
+    margin-top: 3px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pace-tag-ok {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--cerrado);
+    margin-top: 3px;
+  }
+
+  .pace-divider {
+    border-top: 1px solid var(--husk);
+    margin: 4px 0 4px 86px;
+  }
+
+  .insight-box {
+    margin-top: 14px;
+    padding: 11px 14px;
+    background: var(--harvest-lt);
+    border-left: 4px solid var(--harvest);
+  }
+
+  .insight-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .insight-text {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+
+  /* ── MARGIN BARS ──────────────────────────── */
+  .margin-wrap { display: flex; flex-direction: column; gap: 9px; }
+
+  .margin-row { display: flex; align-items: center; gap: 10px; }
+
+  .margin-lbl {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--soil);
+    width: 66px;
+    flex-shrink: 0;
+  }
+
+  .margin-track {
+    flex: 1;
+    height: 22px;
+    background: var(--husk);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .margin-bar {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+
+  .margin-bar-lbl {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .margin-val {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--clay);
+    width: 50px;
+    flex-shrink: 0;
+  }
+
+  /* ── THREE-VARIABLE BOX ───────────────────── */
+  .three-var {
+    background: var(--field);
+    border: 1px solid var(--husk);
+    padding: 20px 22px;
+    margin: 26px 0;
+  }
+
+  .three-var-title {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 14px;
+  }
+
+  .three-var-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+  }
+
+  .tv-cell {
+    padding: 12px 14px;
+    background: white;
+    border: 1px solid var(--husk);
+  }
+
+  .tv-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 6px;
+  }
+
+  .tv-arrow {
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .tv-effect {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.4;
+  }
+
+  .tv-note {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--clay);
+    margin-top: 4px;
+    line-height: 1.35;
+  }
+
+  .tv-combined {
+    grid-column: 1 / -1;
+    padding: 12px 14px;
+    background: var(--soil);
+  }
+
+  .tv-combined .tv-label { color: #6b5a42; }
+  .tv-combined .tv-effect { color: var(--straw); font-weight: 400; }
+  .tv-combined .tv-note { color: #6b5a42; }
+
+  /* ── IMPLICATIONS SECTION ─────────────────── */
+  .implications {
+    background: var(--soil);
+    padding: 30px 32px;
+    margin: 32px 0 0;
+  }
+
+  .impl-header {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 22px;
+  }
+
+  .impl-block {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .impl-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .impl-role {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .impl-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .impl-bullets li {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--straw);
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .impl-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--harvest);
+    font-weight: 600;
+  }
+
+  /* ── TRIGGER FRAMEWORK ────────────────────── */
+  .triggers {
+    background: var(--field);
+    border: 1px solid var(--husk);
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .trigger-hed {
+    background: var(--soil);
+    padding: 12px 20px;
+  }
+
+  .trigger-hed-text {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .trigger-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .trigger-row:last-child { border-bottom: none; }
+
+  .trigger-if {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--soil);
+    background: var(--husk);
+    padding: 12px 14px;
+    width: 170px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+  }
+
+  .trigger-then {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    padding: 12px 16px;
+    flex: 1;
+    line-height: 1.55;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── WATCH LIST ───────────────────────────── */
+  .watch-list {
+    overflow: hidden;
+  }
+
+  .watch-item {
+    display: flex;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .watch-item:last-child { border-bottom: none; }
+
+  .watch-key {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    background: var(--soil);
+    color: var(--straw);
+    padding: 13px 14px;
+    width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .watch-val {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--soil);
+    padding: 13px 16px;
+    flex: 1;
+    line-height: 1.6;
+  }
+
+  /* ── FOOTER ───────────────────────────────── */
+  .footer {
+    background: var(--soil);
+    padding: 26px 48px;
+    border-top: 3px solid var(--harvest);
+  }
+
+  .footer-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--straw);
+    margin-bottom: 8px;
+  }
+
+  .footer-name span { color: var(--harvest); }
+
+  .footer-body {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: #4a3d2a;
+    line-height: 1.7;
+  }
+
+  .rule { border: none; border-top: 1px solid var(--husk); margin: 24px 0; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="pub-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+      <div class="pub-issue">Issue 01 · April 2026</div>
+    </div>
+    <div class="header-tagline">Mapping the financial flows behind Brazil's agricultural markets — for the people who allocate capital into them.</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">Lead Story</div>
+    <h1>The Real's Rally Is Reshaping Brazil's Origination Calendar</h1>
+    <p class="hero-deck">A currency move the market didn't see coming is quietly rewriting the economics of the world's most important soybean export season. The volume numbers look fine. The flow beneath them doesn't.</p>
+  </div>
+
+  <!-- BIG STATS -->
+  <div class="big-stats">
+    <div class="big-stat">
+      <div class="stat-label">2025/26 Crop</div>
+      <div class="stat-num">179<span class="stat-unit">mt</span></div>
+      <div class="stat-delta up">Record harvest</div>
+      <div class="stat-note">Best yield ever · 3,696 kg/ha</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">BRL YTD Move</div>
+      <div class="stat-num">9.4<span class="stat-unit">%</span></div>
+      <div class="stat-delta down">R$5.52 → R$4.95</div>
+      <div class="stat-note">Strongest real in 2+ years</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">Q1 2026 Exports</div>
+      <div class="stat-num">23.5<span class="stat-unit">mt</span></div>
+      <div class="stat-delta up">+6% vs. prior Q1 record</div>
+      <div class="stat-note">Compressed into narrow windows</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <p>Brazil is harvesting a record beans crop. CONAB's latest estimate puts output at 179.2 million metric tons — the largest in history, with the best average yield ever recorded at 3,696 kg/ha. With 85.7% of the area already harvested as of mid-April, the physical supply story is essentially settled. What isn't settled is who is selling, at what price, and when.</p>
+
+    <p>The answer depends less on Chicago futures than on a currency move that caught most participants off-guard.</p>
+
+    <h3>A real nobody priced in</h3>
+
+    <!-- BRL CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">USD/BRL — 2026 Year to Date</div>
+        <div class="chart-note">Real appreciated ~9.4%</div>
+      </div>
+      <div class="chart-inner">
+        <svg width="100%" viewBox="0 0 560 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="brlgrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#B85C1A" stop-opacity="0.13"/>
+              <stop offset="100%" stop-color="#B85C1A" stop-opacity="0.0"/>
+            </linearGradient>
+          </defs>
+          <line x1="56" y1="16" x2="544" y2="16" stroke="#DDD3BC" stroke-width="1"/>
+          <line x1="56" y1="42" x2="544" y2="42" stroke="#DDD3BC" stroke-width="1"/>
+          <line x1="56" y1="68" x2="544" y2="68" stroke="#DDD3BC" stroke-width="1"/>
+          <line x1="56" y1="94" x2="544" y2="94" stroke="#DDD3BC" stroke-width="1"/>
+          <text x="50" y="19" text-anchor="end" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35" font-weight="300">5.55</text>
+          <text x="50" y="45" text-anchor="end" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35" font-weight="300">5.35</text>
+          <text x="50" y="71" text-anchor="end" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35" font-weight="300">5.15</text>
+          <text x="50" y="97" text-anchor="end" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35" font-weight="300">4.95</text>
+          <path d="M56,18 C84,20 104,25 132,31 C160,37 176,49 202,53 C228,57 250,59 274,65 C300,71 320,79 344,88 C368,95 390,100 416,103 C438,105 458,104 488,103 C506,102 520,101 544,99 L544,114 L56,114 Z" fill="url(#brlgrad)"/>
+          <path d="M56,18 C84,20 104,25 132,31 C160,37 176,49 202,53 C228,57 250,59 274,65 C300,71 320,79 344,88 C368,95 390,100 416,103 C438,105 458,104 488,103 C506,102 520,101 544,99" fill="none" stroke="#B85C1A" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="56" cy="18" r="3.5" fill="#B85C1A"/>
+          <text x="61" y="13" font-family="Barlow,sans-serif" font-size="9" fill="#B85C1A" font-weight="700">R$5.52 — Jan 1</text>
+          <circle cx="428" cy="103" r="3" fill="#6B4F35"/>
+          <line x1="428" y1="100" x2="428" y2="70" stroke="#6B4F35" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="430" y="68" font-family="Barlow,sans-serif" font-size="8" fill="#6B4F35">Iran spike · R$5.17</text>
+          <circle cx="488" cy="103" r="3.5" fill="#2B2318"/>
+          <text x="492" y="116" font-family="Barlow,sans-serif" font-size="9" fill="#2B2318" font-weight="700">R$4.95 — Apr 20</text>
+          <text x="56"  y="120" text-anchor="middle" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35">Jan</text>
+          <text x="176" y="120" text-anchor="middle" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35">Feb</text>
+          <text x="296" y="120" text-anchor="middle" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35">Mar</text>
+          <text x="416" y="120" text-anchor="middle" font-family="Barlow,sans-serif" font-size="8.5" fill="#6B4F35">Apr</text>
+        </svg>
+      </div>
+      <div class="chart-src">Source: ValutaFX, Trading Economics · Directional illustration based on public data</div>
+    </div>
+
+    <p>The Brazilian real opened 2026 at R$5.52 per dollar and has been strengthening steadily since. By April 20th, the dollar had touched R$4.95 — its strongest level in over two years — before pulling back marginally to around R$4.98 following a brief geopolitical spike in the Middle East. For the year, the real has appreciated roughly 9–10%.</p>
+
+    <p>This is not the scenario Brazilian soy farmers were hedging for. Many structured their cost base at exchange rates north of R$5.50. The standard pricing mechanism: Brazilian beans are invoiced in dollars, but the producer's costs — land, inputs, labor, logistics — are denominated in reais. When the real strengthens, fewer reais land per bag, squeezing margins already at their lowest in nearly two decades.</p>
+
+    <h3>The three-variable problem</h3>
+
+    <p>Most international analysis treats BRL and CBOT as the two drivers of the Brazilian producer's price in reais. That framing misses the third variable: the FOB basis at Paranaguá, which is the market's reference port in Brazil — the benchmark from which all interior pricing points (Rondonópolis, Sorriso, Lucas do Rio Verde) are quoted as discounts.</p>
+
+    <p>The basis doesn't move in isolation. When BRL strengthens or CBOT weakens, the FOB Paranaguá basis typically firms — partly compensating the producer's loss. But the compensation is partial, not full. And when both BRL appreciation and a CBOT decline occur simultaneously, the combined effect on the producer's price in reais is severe enough that no basis movement can offset it. That is the scenario that fully locks the farmer out of selling.</p>
+
+    <!-- THREE VARIABLE EXPLAINER -->
+    <div class="three-var">
+      <div class="three-var-title">Price dynamics — three variables, one producer decision</div>
+      <div class="three-var-grid">
+        <div class="tv-cell">
+          <div class="tv-label">BRL Strengthens</div>
+          <div class="tv-arrow" style="color:#B85C1A;">↑ R$</div>
+          <div class="tv-effect">Fewer reais per dollar of FOB revenue</div>
+          <div class="tv-note">Basis often firms partially, softening the blow</div>
+        </div>
+        <div class="tv-cell">
+          <div class="tv-label">CBOT Weakens</div>
+          <div class="tv-arrow" style="color:#B85C1A;">↓ ¢/bu</div>
+          <div class="tv-effect">Lower dollar reference price for physical beans</div>
+          <div class="tv-note">Basis may firm, but correlation is unreliable</div>
+        </div>
+        <div class="tv-cell">
+          <div class="tv-label">Basis (Paranaguá)</div>
+          <div class="tv-arrow" style="color:#3A6B4A;">± ¢/bu</div>
+          <div class="tv-effect">Moves inversely to pressure — partial offset</div>
+          <div class="tv-note">Interior quotes as discount to Paranaguá</div>
+        </div>
+        <div class="tv-combined">
+          <div class="tv-label">Worst case — both BRL ↑ and CBOT ↓ simultaneously</div>
+          <div class="tv-effect">Price in reais collapses beyond basis compensation. Farmer selling freezes. The scenario currently in play in 2025/26.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>A selling pace that tells the story</h3>
+
+    <div class="float-stat cf">
+      <div class="float-num">⅓</div>
+      <div class="float-label">of crop sold in Jan 2026 — historic low</div>
+      <div class="float-delta">↑ ~50% by Mar</div>
+    </div>
+
+    <div class="cf">
+      <p>In January, selling pace hit a historic low — roughly one-third of the crop sold at the start of harvest, with approximately 120 million metric tons still unpriced. That was 15 million tons behind the prior-year pace at the same stage, and the weakest commercialization rate recorded for that point in the harvest calendar.</p>
+
+      <p>The recovery came in March, but the trigger matters: a brief CBOT rally pushing futures to a two-year high near $11.70/bu on March 12, combined with CPR payment deadlines falling at end-April. According to Agroconsult, selling pace normalized to roughly 50% by late March — not from price conviction, but because a narrow window opened and debt obligations forced the hand.</p>
+    </div>
+
+    <!-- SELLING PACE CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">Soy Commercialization Pace — 2025/26 vs. Historical</div>
+        <div class="chart-note">% of crop sold at key dates</div>
+      </div>
+      <div class="chart-inner">
+        <div class="pace-wrap">
+          <div class="pace-row">
+            <div class="pace-lbl">Jan 2026</div>
+            <div class="pace-track-wrap">
+              <div class="pace-track">
+                <div class="pace-bar" style="width:33%;background:#B85C1A;"><span class="pace-val">33%</span></div>
+              </div>
+              <div class="pace-tag-warn">▼ Historic low — 15 mt behind prior year pace</div>
+            </div>
+          </div>
+          <div class="pace-row">
+            <div class="pace-lbl muted">Jan avg.</div>
+            <div class="pace-track-wrap">
+              <div class="pace-track">
+                <div class="pace-bar" style="width:45%;background:#6B4F35;"><span class="pace-val">~45%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="pace-divider"></div>
+          <div class="pace-row">
+            <div class="pace-lbl">Mar 2026</div>
+            <div class="pace-track-wrap">
+              <div class="pace-track">
+                <div class="pace-bar" style="width:50%;background:#2B2318;"><span class="pace-val">~50%</span></div>
+              </div>
+              <div class="pace-tag-ok">↑ Gap closed — CBOT spike + CPR deadlines Apr 30</div>
+            </div>
+          </div>
+          <div class="pace-row">
+            <div class="pace-lbl muted">Mar avg.</div>
+            <div class="pace-track-wrap">
+              <div class="pace-track">
+                <div class="pace-bar" style="width:52%;background:#6B4F35;"><span class="pace-val">~52%</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="insight-box">
+            <div class="insight-label">Key insight</div>
+            <div class="insight-text">~90 mt remains unpriced in a 179 mt record crop. January's historic deficit closed for debt reasons, not price conviction. The farmer hasn't sold because he wants to — he's sold because he had to.</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-src">Source: Agroconsult via The AgriBiz (Mar 2026) · The AgriBiz (Jan 2026)</div>
+    </div>
+
+    <div class="pull">
+      <p>"The Brazilian producer is not managing a marketing calendar — he is managing a cash flow crisis, selling in bursts when FX or CBOT provides a momentary opening, then going dormant again."</p>
+      <cite>— Veteran commodity trader · 40+ years in Brazil origination</cite>
+    </div>
+
+    <h3>What this means for the origination chain</h3>
+
+    <p>For traders and originators running physical books on Brazilian beans, this creates a specific risk profile: extended periods of thin origination supply, followed by sudden surges when the farmer decides to sell. FOB Paranaguá basis tightens during the quiet, then collapses when a farmer selling wave arrives. An originator who bought FOB during a basis-tight window and sees a flush of farmer sales the following week absorbs the mark-to-market on that inventory.</p>
+
+    <p>With roughly 50% of a record 179 million ton crop still unpriced in late March, the physical market carries a structural overhang heading into the period when corn safrinha harvest competes for the same storage and logistics infrastructure in Mato Grosso. If BRL stays firm and CBOT doesn't provide a new catalyst, that unsold inventory weighs on FOB premiums through mid-year — precisely when Brazilian origination is supposed to taper and attention shifts to US new crop.</p>
+
+    <!-- MARGIN CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">Producer Margin — Mato Grosso</div>
+        <div class="chart-note">Gross profit per acre · high-yield operations</div>
+      </div>
+      <div class="chart-inner">
+        <div class="margin-wrap">
+          <div class="margin-row">
+            <div class="margin-lbl">2021/22</div>
+            <div class="margin-track"><div class="margin-bar" style="width:88%;background:#1E4D6B;"><span class="margin-bar-lbl">Peak cycle</span></div></div>
+            <div class="margin-val">$440/ac</div>
+          </div>
+          <div class="margin-row">
+            <div class="margin-lbl">2022/23</div>
+            <div class="margin-track"><div class="margin-bar" style="width:58%;background:#3A72A0;"></div></div>
+            <div class="margin-val">~$280</div>
+          </div>
+          <div class="margin-row">
+            <div class="margin-lbl">2023/24</div>
+            <div class="margin-track"><div class="margin-bar" style="width:22%;background:#7FAAC8;"></div></div>
+            <div class="margin-val">~$100</div>
+          </div>
+          <div class="margin-row">
+            <div class="margin-lbl">2024/25</div>
+            <div class="margin-track"><div class="margin-bar" style="width:15%;background:#AECFE0;"></div></div>
+            <div class="margin-val">~$70</div>
+          </div>
+          <div class="margin-row">
+            <div class="margin-lbl" style="color:#B85C1A;font-weight:600;">2025/26</div>
+            <div class="margin-track" style="background:#F5E3D5;">
+              <div class="margin-bar" style="width:6%;background:#B85C1A;"></div>
+              <span style="position:absolute;left:9%;top:50%;transform:translateY(-50%);font-family:Barlow,sans-serif;font-size:9px;font-weight:700;color:#B85C1A;letter-spacing:0.1em;text-transform:uppercase;">Near breakeven</span>
+            </div>
+            <div class="margin-val" style="color:#B85C1A;">≈$0–40</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-src">Source: Farmdoc Daily (Mar 2026) · Cogo Intelligence · High-yield Mato Grosso operations</div>
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- IMPLICATIONS — dark section -->
+  <div class="implications">
+    <div class="impl-header">So what — implications by reader type</div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the physical trader / originator</div>
+      <ul class="impl-bullets">
+        <li>Expect FOB Paranaguá basis to remain volatile through Q2 — tight when farmer selling is dormant, collapsing when CPR deadlines or CBOT spikes force supply.</li>
+        <li>Originators long FOB inventory during quiet periods carry asymmetric mark-to-market risk if a selling wave follows. Size positions accordingly.</li>
+        <li>Watch interior-to-port spreads (Rondonópolis vs. Paranaguá) as a lead indicator — they compress before the basis at port collapses.</li>
+        <li>A sustained CBOT move above $12.00/bu is the most likely trigger for the next meaningful selling window. WASDE on May 10 is the next scheduled catalyst.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the commodity fund researcher</div>
+      <ul class="impl-bullets">
+        <li>CONAB's production number is no longer the key variable — it's settled at a record. The variable that moves your model now is BRL/USD relative to the Mato Grosso cost-of-production break-even (~R$4.80–5.00/bag).</li>
+        <li>~90 million tons of beans remain unpriced. The distribution of that selling — concentrated bursts vs. steady flow — will determine whether the 2025/26 marketing year closes clean or creates carryover pressure into the next cycle.</li>
+        <li>June–July safrinha corn harvest creates a mechanically-driven beans selling window in Mato Grosso regardless of price. That is the structural release valve if BRL and CBOT don't cooperate first.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the credit / structured finance allocator</div>
+      <ul class="impl-bullets">
+        <li>CPR-backed structures with producer-level obligors face elevated rollover risk if BRL stays below R$5.00 through April vencimentos. The stress is not default yet — it's renegotiation and extension.</li>
+        <li>Diversified originator exposure (large traders, cooperatives) is better insulated than single-producer CPR structures. The Agrogalaxy episode in 2024 established the template for how contagion spreads in the latter.</li>
+        <li>CRA portfolios with short-duration receivables and high-grade originators are structurally less exposed to this FX-driven stress than longer-duration, farm-level credit.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- TRIGGER FRAMEWORK -->
+  <div class="triggers">
+    <div class="trigger-hed">
+      <div class="trigger-hed-text">Trigger framework — what to watch in May / June</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">BRL/USD stays below R$5.00</div>
+      <div class="trigger-then">Farmer selling remains event-driven and sporadic. Q2 origination flow stays compressed. FOB basis stays volatile.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">CBOT sustains above $12.00/bu</div>
+      <div class="trigger-then">Opens new farmer selling window. Expect a basis softening as supply flushes. Watch for originator inventory risk.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">BRL ↑ and CBOT ↓ simultaneously</div>
+      <div class="trigger-then">Worst case for farmer margins. Basis compensation insufficient. Full selling freeze. Carryover risk into 2026/27 cycle rises.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Safrinha harvest pressure (Jun–Jul)</div>
+      <div class="trigger-then">Mechanical selling window regardless of price — storage competition in MT forces beans to move. Structural relief valve for the overhang.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+    <div class="footer-body">Issue 01 · April 2026 · All data sourced from public information · Not investment advice · São Paulo</div>
+  </div>
+
+</div>
+</body>
+</html>

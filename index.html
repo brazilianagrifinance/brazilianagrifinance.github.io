@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brazilian Agri Finance Intelligence</title>
+<meta name="description" content="Financial analysis of Brazil's agricultural markets — for fund managers, family offices, and international capital allocators.">
+<meta property="og:title" content="Brazilian Agri Finance Intelligence">
+<meta property="og:description" content="The financial layer beneath Brazil's agricultural flows. For allocators who need more than headlines.">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300&family=Barlow:wght@300;400;500;600;700&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --soil: #2B2318; --clay: #6B4F35; --straw: #F2EBD9;
+    --husk: #DDD3BC; --field: #E8E0CC; --harvest: #B85C1A;
+    --river: #1E4D6B; --sans: 'Barlow', system-ui, sans-serif;
+    --serif: 'Spectral', Georgia, serif;
+  }
+  body { background: #C8C0B0; font-family: var(--sans); color: var(--soil); -webkit-font-smoothing: antialiased; }
+  .wrapper { max-width: 660px; margin: 0 auto; background: var(--straw); min-height: 100vh; }
+  .header { background: var(--soil); padding: 30px 48px 26px; }
+  .header-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; padding-bottom: 16px; border-bottom: 1px solid #3d3020; }
+  .pub-name { font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--straw); }
+  .pub-name span { color: var(--harvest); }
+  .tagline { font-family: var(--serif); font-size: 13px; font-weight: 300; font-style: italic; color: #7a6a55; }
+  .content { padding: 40px 48px; }
+  .section-label { font-size: 9px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--harvest); margin-bottom: 24px; }
+  .issue-card { border: 1px solid var(--husk); margin-bottom: 16px; overflow: hidden; background: white; display: block; text-decoration: none; color: inherit; transition: border-color 0.15s; }
+  .issue-card:hover { border-color: var(--soil); }
+  .issue-card-inner { display: flex; align-items: stretch; }
+  .issue-num { background: var(--soil); color: var(--straw); font-family: var(--serif); font-size: 28px; font-weight: 600; padding: 20px 18px; min-width: 64px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .issue-body { padding: 18px 20px; flex: 1; }
+  .issue-date { font-size: 9px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--clay); margin-bottom: 6px; }
+  .issue-title { font-family: var(--serif); font-size: 17px; font-weight: 600; color: var(--soil); line-height: 1.25; margin-bottom: 8px; }
+  .issue-deck { font-size: 12.5px; font-weight: 300; color: var(--clay); line-height: 1.5; }
+  .issue-arrow { font-size: 18px; color: var(--harvest); padding: 0 18px; display: flex; align-items: center; flex-shrink: 0; }
+  .about { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--husk); }
+  .about p { font-size: 13px; font-weight: 300; color: var(--clay); line-height: 1.7; margin-bottom: 12px; }
+  .sub-link { display: inline-block; margin-top: 16px; background: var(--harvest); color: white; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; padding: 11px 22px; text-decoration: none; }
+  .sub-link:hover { background: var(--soil); }
+  .footer { background: var(--soil); padding: 24px 48px; border-top: 3px solid var(--harvest); margin-top: 0; }
+  .footer-name { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--straw); margin-bottom: 6px; }
+  .footer-name span { color: var(--harvest); }
+  .footer-body { font-size: 11px; font-weight: 300; color: #4a3d2a; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <div class="header-top">
+      <div class="pub-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+    </div>
+    <div class="tagline">Mapping the financial flows behind Brazil's agricultural markets — for the people who allocate capital into them.</div>
+  </div>
+  <div class="content">
+    <div class="section-label">All Issues</div>
+    <a class="issue-card" href="issues/issue-01.html">
+      <div class="issue-card-inner">
+        <div class="issue-num">01</div>
+        <div class="issue-body">
+          <div class="issue-date">April 2026</div>
+          <div class="issue-title">The Real's Rally Is Reshaping Brazil's Origination Calendar</div>
+          <div class="issue-deck">A currency move the market didn't see coming is quietly rewriting the economics of the world's most important soybean export season.</div>
+        </div>
+        <div class="issue-arrow">→</div>
+      </div>
+    </a>
+    <div class="about">
+      <p>BAFI delivers structured financial analysis of Brazil's agricultural markets — M&A, structured credit, origination flows, and the implications for capital allocators. Published every two weeks.</p>
+      <p>The editorial layer that Bloomberg and Reuters don't provide: what a deal, a trading move, or a regulatory shift means for the people running money into Brazilian agri.</p>
+      <a class="sub-link" href="https://agrifinancialplumbing.substack.com" target="_blank">Subscribe on Substack →</a>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+    <div class="footer-body">Not investment advice · All data from public sources · São Paulo</div>
+  </div>
+</div>
+</body>
+</html>

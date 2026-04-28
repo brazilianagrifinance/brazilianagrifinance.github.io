@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Private Stack That Replaced the State — BAFI Issue 02</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --soil:      #2B2318;
+    --clay:      #6B4F35;
+    --straw:     #F2EBD9;
+    --husk:      #DDD3BC;
+    --field:     #E8E0CC;
+    --cerrado:   #3A6B4A;
+    --harvest:   #B85C1A;
+    --harvest-lt:#F5E3D5;
+    --river:     #1E4D6B;
+    --river-lt:  #D4E4EE;
+    --gold:      #8C6D1F;
+    --gold-lt:   #F5EDD4;
+
+    --sans: 'Barlow', system-ui, sans-serif;
+    --serif: 'Spectral', Georgia, serif;
+  }
+
+  body {
+    background: #C8C0B0;
+    font-family: var(--sans);
+    color: var(--soil);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 660px;
+    margin: 0 auto;
+    background: var(--straw);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--soil);
+    padding: 30px 48px 26px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .pub-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--straw);
+  }
+
+  .pub-name span { color: var(--harvest); }
+
+  .pub-issue {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    letter-spacing: 0.1em;
+  }
+
+  .header-tagline {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+    color: #7a6a55;
+    line-height: 1.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 40px 48px 32px;
+    border-bottom: 2px solid var(--soil);
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--soil);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-deck {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--clay);
+  }
+
+  /* ── BIG STATS ── */
+  .big-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .big-stat {
+    padding: 26px 28px;
+    border-right: 1px solid var(--husk);
+  }
+
+  .big-stat:last-child { border-right: none; }
+  .big-stat:first-child { background: var(--river); }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .big-stat:first-child .stat-label { color: #5a8aaa; }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--soil);
+    letter-spacing: -0.03em;
+  }
+
+  .big-stat:first-child .stat-num { color: var(--straw); }
+
+  .stat-unit {
+    font-family: var(--sans);
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  .stat-delta {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .up   { color: var(--cerrado); }
+  .down { color: var(--harvest); }
+
+  .stat-note {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--clay);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .big-stat:first-child .stat-note { color: #5a8aaa; }
+
+  /* ── BODY ── */
+  .body { padding: 38px 48px; }
+
+  .body p {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.82;
+    color: #2e2416;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--soil);
+    margin: 36px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── CHART BLOCK ── */
+  .chart-block {
+    background: white;
+    border: 1px solid var(--husk);
+    margin: 26px 0;
+    overflow: hidden;
+  }
+
+  .chart-hed {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid var(--husk);
+    background: var(--field);
+  }
+
+  .chart-title {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soil);
+  }
+
+  .chart-note {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .chart-inner { padding: 18px 20px; }
+
+  .chart-src {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--clay);
+    padding: 7px 18px 9px;
+    border-top: 1px solid var(--husk);
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    padding: 26px 30px;
+    border-left: 5px solid var(--soil);
+    background: var(--field);
+    margin: 28px 0;
+  }
+
+  .pull p {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--soil);
+    margin: 0;
+  }
+
+  .pull cite {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 12px;
+    font-style: normal;
+  }
+
+  /* ── STACK DIAGRAM ── */
+  .stack-diagram {
+    margin: 26px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--husk);
+    overflow: hidden;
+  }
+
+  .stack-header {
+    background: var(--soil);
+    padding: 10px 18px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .stack-layer {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .stack-layer:last-child { border-bottom: none; }
+
+  .stack-instrument {
+    width: 140px;
+    flex-shrink: 0;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .stack-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--straw);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .stack-abbr {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    color: #6b5a42;
+    margin-top: 2px;
+  }
+
+  .stack-body {
+    flex: 1;
+    padding: 14px 16px;
+    background: white;
+    border-left: 1px solid var(--husk);
+  }
+
+  .stack-desc {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.55;
+  }
+
+  .stack-meta {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--clay);
+    margin-top: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  .stack-meta span {
+    font-weight: 300;
+    color: var(--clay);
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow-box {
+    background: var(--field);
+    border: 1px solid var(--husk);
+    padding: 20px 22px;
+    margin: 26px 0;
+  }
+
+  .flow-title {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 18px;
+  }
+
+  .flow-nodes {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+
+  .flow-node {
+    background: white;
+    border: 1px solid var(--husk);
+    padding: 10px 12px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .flow-node-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 4px;
+  }
+
+  .flow-node-name {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--soil);
+    line-height: 1.2;
+  }
+
+  .flow-arrow {
+    font-family: var(--sans);
+    font-size: 10px;
+    color: var(--harvest);
+    font-weight: 700;
+    flex-shrink: 0;
+    padding: 0 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .flow-arrow-label {
+    font-size: 8px;
+    font-weight: 300;
+    color: var(--clay);
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  .flow-node.highlight {
+    background: var(--soil);
+    border-color: var(--soil);
+  }
+
+  .flow-node.highlight .flow-node-label { color: #6b5a42; }
+  .flow-node.highlight .flow-node-name { color: var(--straw); }
+
+  /* ── STACKED BAR ── */
+  .stacked-bar-wrap { display: flex; flex-direction: column; gap: 14px; }
+
+  .sbar-row { display: flex; align-items: center; gap: 10px; }
+
+  .sbar-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--soil);
+    width: 60px;
+    flex-shrink: 0;
+  }
+
+  .sbar-track {
+    flex: 1;
+    height: 28px;
+    display: flex;
+    overflow: hidden;
+    border: 1px solid var(--husk);
+  }
+
+  .sbar-seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sbar-seg-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    color: white;
+    white-space: nowrap;
+    padding: 0 5px;
+  }
+
+  .sbar-total {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--clay);
+    width: 70px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .sbar-legend {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .sbar-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sbar-legend-dot {
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+  }
+
+  .sbar-legend-text {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+  }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    margin-top: 14px;
+    padding: 11px 14px;
+    background: var(--harvest-lt);
+    border-left: 4px solid var(--harvest);
+  }
+
+  .insight-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .insight-text {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+
+  /* ── GOLD BOX ── */
+  .gold-box {
+    background: var(--gold-lt);
+    border: 1px solid #c9aa60;
+    border-left: 4px solid var(--gold);
+    padding: 14px 16px;
+    margin: 22px 0;
+  }
+
+  .gold-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .gold-text {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.55;
+  }
+
+  /* ── IMPLICATIONS ── */
+  .implications {
+    background: var(--soil);
+    padding: 30px 32px;
+    margin: 32px 0 0;
+  }
+
+  .impl-header {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 22px;
+  }
+
+  .impl-block {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .impl-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .impl-role {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .impl-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .impl-bullets li {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--straw);
+    line-height: 1.55;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .impl-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--harvest);
+    font-weight: 600;
+  }
+
+  /* ── TRIGGER TABLE ── */
+  .triggers {
+    overflow: hidden;
+    border: 1px solid var(--husk);
+  }
+
+  .trigger-hed {
+    background: var(--soil);
+    padding: 12px 20px;
+  }
+
+  .trigger-hed-text {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .trigger-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .trigger-row:last-child { border-bottom: none; }
+
+  .trigger-if {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--soil);
+    background: var(--husk);
+    padding: 12px 14px;
+    width: 170px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+  }
+
+  .trigger-then {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    padding: 12px 16px;
+    flex: 1;
+    line-height: 1.55;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--soil);
+    padding: 26px 48px;
+    border-top: 3px solid var(--harvest);
+  }
+
+  .footer-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--straw);
+    margin-bottom: 8px;
+  }
+
+  .footer-name span { color: var(--harvest); }
+
+  .footer-body {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: #4a3d2a;
+    line-height: 1.7;
+  }
+
+  .rule { border: none; border-top: 1px solid var(--husk); margin: 24px 0; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="pub-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+      <div class="pub-issue">Issue 02 · May 2026</div>
+    </div>
+    <div class="header-tagline">Mapping the financial flows behind Brazil's agricultural markets — for the people who allocate capital into them.</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">Structural Analysis</div>
+    <h1>The Private Stack That Replaced the State</h1>
+    <p class="hero-deck">Brazil's harvest is no longer financed by the government. A R$1.41 trillion private credit architecture — built on CPRs, CRAs, and FIAGROs — has quietly displaced the Plano Safra as the sector's dominant funding source. Here is how the stack works, who sits where in the risk structure, and what breaks first when a cycle turns.</p>
+  </div>
+
+  <!-- BIG STATS -->
+  <div class="big-stats">
+    <div class="big-stat">
+      <div class="stat-label">Private Agro Credit Stack</div>
+      <div class="stat-num">R$1.41<span class="stat-unit">T</span></div>
+      <div class="stat-delta up">Surpassed official credit</div>
+      <div class="stat-note">CPR + LCA + CRA + FIAGRO combined stock</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">CRA Issuances 2025</div>
+      <div class="stat-num">R$46.2<span class="stat-unit">B</span></div>
+      <div class="stat-delta up">+11.1% vs. 2024</div>
+      <div class="stat-note">Record year post-Agrogalaxy stress</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">FIAGRO AUM Growth</div>
+      <div class="stat-num">204<span class="stat-unit">%</span></div>
+      <div class="stat-delta up">Mar 2023 → Mar 2025</div>
+      <div class="stat-note">R$14.7B → R$44.7B in 24 months</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <p>The Plano Safra — Brazil's official government credit program for agriculture — covers roughly one-third of the sector's actual financing needs. The rest is absorbed by a private architecture that most international allocators can name but few can navigate with precision. Understanding that architecture is a prerequisite for understanding almost everything else about Brazilian agri finance: where risk accumulates, how contagion travels, and why a soybean farmer's payment deadline in April matters to a FIAGRO investor in São Paulo.</p>
+
+    <p>This edition maps the stack — not as a glossary, but as a risk diagram.</p>
+
+    <h3>The four instruments and where they sit</h3>
+
+    <!-- INSTRUMENT STACK -->
+    <div class="stack-diagram">
+      <div class="stack-header">The Brazilian Agro Finance Stack — from farm gate to capital market</div>
+
+      <div class="stack-layer">
+        <div class="stack-instrument" style="background:#2B2318;">
+          <div class="stack-name">CPR</div>
+          <div class="stack-abbr">Cédula de Produto Rural</div>
+        </div>
+        <div class="stack-body">
+          <div class="stack-desc">The foundation. A promise of future delivery of agricultural product — or its cash equivalent — issued directly by the producer or cooperative. Created in 1994, the CPR is the instrument that ended the state's monopoly on rural credit. It sits at the farm gate: the producer issues a CPR to a trading company, input supplier, or financial institution in exchange for upfront financing.</div>
+          <div class="stack-meta">Stock (Mar 2026): <span>R$560B &nbsp;·&nbsp;</span> Issuer: <span>Producer / Cooperative &nbsp;·&nbsp;</span> Two types: <span>Physical (grain delivery) and Financial (cash settlement)</span></div>
+        </div>
+      </div>
+
+      <div class="stack-layer">
+        <div class="stack-instrument" style="background:#1E4D6B;">
+          <div class="stack-name" style="color:var(--straw);">LCA</div>
+          <div class="stack-abbr" style="color:#4a7a9a;">Letra de Crédito do Agronegócio</div>
+        </div>
+        <div class="stack-body">
+          <div class="stack-desc">Bank-issued bonds backed by agro credit portfolios. The LCA is the retail entry point into agro credit — tax-exempt for individual investors, widely distributed by Brazilian banks. The bank originates rural credit, packages it into an LCA, and sells to retail investors. The risk sits with the bank, not the producer. Large stock, but lower analytical relevance for institutional allocators.</div>
+          <div class="stack-meta">Stock (2025): <span>R$603B &nbsp;·&nbsp;</span> Issuer: <span>Financial institutions &nbsp;·&nbsp;</span> Investor: <span>Primarily retail, tax-exempt</span></div>
+        </div>
+      </div>
+
+      <div class="stack-layer">
+        <div class="stack-instrument" style="background:#6B4F35;">
+          <div class="stack-name" style="color:var(--straw);">CRA</div>
+          <div class="stack-abbr" style="color:#b0967a;">Certificado de Recebíveis do Agronegócio</div>
+        </div>
+        <div class="stack-body">
+          <div class="stack-desc">Asset-backed securities structured by securitization companies and backed by agro receivables — CPRs, CDCAs, or commercial contracts. The CRA is the instrument that connected the agro sector to the capital market. A trading company or large producer issues a debenture, which a securitizer uses as collateral to issue a CRA to institutional investors. The credit risk travels from the obligor (producer or trader) through the structure to the investor.</div>
+          <div class="stack-meta">Stock (2025): <span>R$173B &nbsp;·&nbsp;</span> Issuer: <span>Securitizers (Vert, True, Eco) &nbsp;·&nbsp;</span> Backed by: <span>Debêntures most common (R$57.8B)</span></div>
+        </div>
+      </div>
+
+      <div class="stack-layer" style="border-bottom:none;">
+        <div class="stack-instrument" style="background:#3A6B4A;">
+          <div class="stack-name" style="color:var(--straw);">FIAGRO</div>
+          <div class="stack-abbr" style="color:#78a888;">Fundo de Investimento Agro</div>
+        </div>
+        <div class="stack-body">
+          <div class="stack-desc">Listed funds that invest across the agro credit stack — primarily CRAs, but also CDCAs, real estate, and equity. Created in 2021, FIAGROs grew from zero to R$56B AUM in under four years. Three subtypes: FIAGRO-FIDC (credit), FIAGRO-FII (real estate), and FIAGRO-FIP (equity). Listed on B3, which creates daily mark-to-market — and the sector's most visible signal of stress.</div>
+          <div class="stack-meta">AUM (Mar 2026): <span>R$56B &nbsp;·&nbsp;</span> Funds operating: <span>221 &nbsp;·&nbsp;</span> Investor: <span>Institutional + retail via B3</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>How the money flows from capital market to farm gate</h3>
+
+    <p>The standard origination chain runs in the opposite direction from what most international allocators assume. Capital doesn't flow from investor to farmer directly — it flows through a series of intermediaries, each of which takes a spread and passes the risk along. Understanding that chain is essential for knowing where the stress appears first when a cycle turns.</p>
+
+    <!-- FLOW DIAGRAM -->
+    <div class="flow-box">
+      <div class="flow-title">Capital flow — from investor to farm gate</div>
+      <div class="flow-nodes">
+        <div class="flow-node">
+          <div class="flow-node-label">Investor</div>
+          <div class="flow-node-name">FIAGRO / CRA holder</div>
+        </div>
+        <div class="flow-arrow">→<span class="flow-arrow-label">buys</span></div>
+        <div class="flow-node">
+          <div class="flow-node-label">Capital Market</div>
+          <div class="flow-node-name">CRA / FIAGRO units</div>
+        </div>
+        <div class="flow-arrow">→<span class="flow-arrow-label">backed by</span></div>
+        <div class="flow-node">
+          <div class="flow-node-label">Originator</div>
+          <div class="flow-node-name">Trading / Coop / Input Co.</div>
+        </div>
+        <div class="flow-arrow">→<span class="flow-arrow-label">issues</span></div>
+        <div class="flow-node highlight">
+          <div class="flow-node-label">Farm Gate</div>
+          <div class="flow-node-name">CPR / Barter</div>
+        </div>
+      </div>
+      <div style="margin-top:14px;padding:10px 12px;background:white;border:1px solid var(--husk);">
+        <div style="font-family:var(--sans);font-size:9px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--clay);">Key implication</div>
+        <div style="font-family:var(--sans);font-size:12px;font-weight:300;color:var(--soil);margin-top:4px;line-height:1.5;">The investor's credit risk is to the originator, not the farmer. But the originator's risk is concentrated in farm-level CPRs. When a producer defaults on a CPR, it travels up the chain — from originator balance sheet to CRA structure to FIAGRO NAV — often faster than the transparency of the structure suggests.</div>
+      </div>
+    </div>
+
+    <h3>The barter loop — where trading companies sit</h3>
+
+    <p>The most operationally important financing mechanism in the Mato Grosso basin is the barter operation — and the least discussed in international research. In a barter transaction, an input supplier (fertilizers, seeds, agrochemicals) delivers inputs to the producer at planting time, and receives a CPR as payment: a promise of physical grain delivery after harvest. The input supplier then sells that CPR to a trading company, which becomes the creditor of the future grain.</p>
+
+    <p>This mechanism has three consequences that matter for capital allocators. First, it ties the producer's input financing directly to his origination calendar — if he can't deliver grain, the whole structure unwinds. Second, it gives the trading company a low-cost inventory mechanism: they fund inputs, receive grain, and sell FOB Santos without ever having to buy spot in the physical market. Third, it creates a population of CPR obligations that mature at harvest — which is exactly why CPR payment deadlines in April are a catalyst for farmer selling, as documented in our previous issue.</p>
+
+    <div class="pull">
+      <p>"The Plano Safra covers about one-third of Brazilian agriculture. The rest is the private stack — and most of the risk that matters is in that other two-thirds."</p>
+      <cite>— ANBIMA Directorate, August 2025 · Agronegócio represents 3.5% of capital markets, 25% of GDP</cite>
+    </div>
+
+    <h3>How the market learned about risk: the Agrogalaxy episode</h3>
+
+    <p>On September 18, 2024, Agrogalaxy Participações — a consolidator of agricultural input distributors — filed for recuperação judicial with R$4.1 billion in total debt. Of that, approximately R$830 million were CRAs. The filing triggered immediate mark-to-market losses in at least eleven FIAGROs, with CPTR11 (Capitânia), XPCA11 (XP), and JGPX11 (JGP) each carrying exposures of 7–8% of NAV.</p>
+
+    <!-- AGROGALAXY EXPOSURE CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">Agrogalaxy RJ — FIAGRO Exposure at Filing (Sep 2024)</div>
+        <div class="chart-note">% of NAV · Selected funds</div>
+      </div>
+      <div class="chart-inner">
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-family:var(--sans);font-size:11px;font-weight:500;color:var(--soil);width:72px;flex-shrink:0;">XPCA11</div>
+            <div style="flex:1;height:22px;background:var(--husk);position:relative;overflow:hidden;">
+              <div style="width:82%;height:100%;background:var(--harvest);display:flex;align-items:center;padding-left:8px;">
+                <span style="font-family:var(--sans);font-size:9px;font-weight:700;color:white;">8.2% of NAV</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-family:var(--sans);font-size:11px;font-weight:500;color:var(--soil);width:72px;flex-shrink:0;">JGPX11</div>
+            <div style="flex:1;height:22px;background:var(--husk);position:relative;overflow:hidden;">
+              <div style="width:80%;height:100%;background:var(--harvest);display:flex;align-items:center;padding-left:8px;">
+                <span style="font-family:var(--sans);font-size:9px;font-weight:700;color:white;">8.0% of NAV</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="font-family:var(--sans);font-size:11px;font-weight:500;color:var(--soil);width:72px;flex-shrink:0;">CPTR11</div>
+            <div style="flex:1;height:22px;background:var(--husk);position:relative;overflow:hidden;">
+              <div style="width:70%;height:100%;background:var(--harvest);display:flex;align-items:center;padding-left:8px;">
+                <span style="font-family:var(--sans);font-size:9px;font-weight:700;color:white;">7.0% of NAV</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="insight-box" style="margin-top:14px;">
+          <div class="insight-label">What happened next</div>
+          <div class="insight-text">CPTR11 zeroed dividends in October 2024 and provisioned 50% of its Agrogalaxy exposure (R$14.3M impact). FIAGROs with exposure fell 6–7% on the day of the filing. R$300M in CRA exposure across 11 funds became illiquid overnight as secondary market trading was suspended.</div>
+        </div>
+      </div>
+      <div class="chart-src">Source: XP Research, Brazil Journal, InfoMoney · September–October 2024</div>
+    </div>
+
+    <p>The Agrogalaxy episode established three things that are now priced into how sophisticated investors approach this market. First, concentration risk in single obligors is severe — even well-managed funds carried exposures that could zero a month's dividends. Second, the FIAGRO structure's B3 listing creates a liquidity mismatch: the underlying assets (CRAs, CDCAs) are illiquid, but the units trade daily. When retail investors panic and sell, NAV gaps open. Third, contagion between FIAGROs is real — because multiple funds held the same CRA, the stress was simultaneous and correlated.</p>
+
+    <p>The market did not collapse. But it restructured. New issuances in 2025 reflected tighter covenants, higher spreads for non-investment-grade obligors, and a clearer distinction between high-grade originator exposure and farm-level CPR risk. FIAGROs with diversified portfolios and large-trader obligors recovered strongly — HGAG11 gained 63.5% in 2025. Farm-level and single-obligor structures did not.</p>
+
+    <h3>The growth numbers obscure the structural imbalance</h3>
+
+    <!-- GROWTH CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">Private Agro Credit Stack — Stock Growth</div>
+        <div class="chart-note">R$ billions · Selected instruments</div>
+      </div>
+      <div class="chart-inner">
+        <div class="stacked-bar-wrap">
+          <div class="sbar-row">
+            <div class="sbar-label">CPR</div>
+            <div class="sbar-track">
+              <div class="sbar-seg" style="width:100%;background:#2B2318;">
+                <span class="sbar-seg-label">R$560B (Mar 2026) · +28% YoY</span>
+              </div>
+            </div>
+            <div class="sbar-total">R$560B</div>
+          </div>
+          <div class="sbar-row">
+            <div class="sbar-label">LCA</div>
+            <div class="sbar-track">
+              <div class="sbar-seg" style="width:100%;background:#1E4D6B;">
+                <span class="sbar-seg-label">R$603B (2025) · +18% YoY</span>
+              </div>
+            </div>
+            <div class="sbar-total">R$603B</div>
+          </div>
+          <div class="sbar-row">
+            <div class="sbar-label">CRA</div>
+            <div class="sbar-track">
+              <div class="sbar-seg" style="width:29%;background:#6B4F35;">
+                <span class="sbar-seg-label">R$174B · +15%</span>
+              </div>
+            </div>
+            <div class="sbar-total">R$174B</div>
+          </div>
+          <div class="sbar-row">
+            <div class="sbar-label">FIAGRO</div>
+            <div class="sbar-track">
+              <div class="sbar-seg" style="width:10%;background:#3A6B4A;">
+                <span class="sbar-seg-label">R$56B · +29%</span>
+              </div>
+            </div>
+            <div class="sbar-total">R$56B</div>
+          </div>
+        </div>
+        <div class="insight-box" style="margin-top:16px;">
+          <div class="insight-label">The imbalance</div>
+          <div class="insight-text">The stack totals R$1.41T — larger than Brazil's official rural credit program. But the CPR layer (R$560B), which carries the most direct farm-level risk, grew 28% YoY — the fastest of any instrument. Growth is concentrated where transparency is lowest and collateral quality is hardest to assess.</div>
+        </div>
+      </div>
+      <div class="chart-src">Source: MAPA (Mar 2026) · CVM Boletim CRA (2025) · B3 · ANBIMA · CNN Brasil Agro</div>
+    </div>
+
+    <p>The aggregate growth numbers tell a story of a maturing market. The risk distribution within that market tells a more nuanced one. The instruments with the most retail penetration — LCA (R$603B) and listed FIAGROs — have the clearest mark-to-market and the most regulatory oversight. The instruments with the most direct farm exposure — CPRs (R$560B) — have the least. The CPR market grew 28% year-over-year through March 2026, the fastest pace of any instrument in the stack. That growth reflects genuine demand for pre-financing from producers, but it also means the highest-risk layer of the architecture is expanding fastest.</p>
+
+    <div class="gold-box">
+      <div class="gold-label">The regulatory shift to watch</div>
+      <div class="gold-text">The 2024 Resolução CVM 214 introduced formal regulation for FIAGROs for the first time — previously operating under temporary rules. Funds had until September 2025 to adapt. Separately, a proposed tax reform veto would subject FIAGROs to IBS/CBS, which could alter the product's tax economics for retail investors. The regulatory trajectory matters: tighter oversight raises the quality floor but may constrain smaller issuers.</div>
+    </div>
+
+  </div>
+
+  <!-- IMPLICATIONS -->
+  <div class="implications">
+    <div class="impl-header">So what — implications by reader type</div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the commodity fund researcher</div>
+      <ul class="impl-bullets">
+        <li>The CPR layer is your leading indicator of farm-level stress — not FIAGRO NAVs, which lag. A spike in CPR renegotiations or missed deliveries precedes FIAGRO mark-downs by 30–60 days.</li>
+        <li>The Agrogalaxy episode showed that FIAGRO correlation is high — multiple funds holding the same CRA means stress is simultaneous. In your model, treat concentrated FIAGRO exposure to a single obligor as a binary risk, not a spread risk.</li>
+        <li>Watch the FIAGRO-FIDC subtype: it carries the most direct credit exposure and the least liquidity buffer. FIAGRO-FII (real estate) is structurally more insulated from commodity cycle stress.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the physical trader / originator</div>
+      <ul class="impl-bullets">
+        <li>Barter CPRs maturing at harvest are the mechanism connecting the capital market to your origination calendar. When CPR payment deadlines cluster (as in April 2026), expect forced selling regardless of price — that is flow supply, not price-driven supply.</li>
+        <li>The trading company's balance sheet sits between the producer's CPR and the CRA structure. If you are long physical beans and short capital via CRAs, a producer default on a barter CPR hits your inventory and your funding simultaneously. Size your CRA-funded inventory positions with this correlation in mind.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the credit / structured finance allocator</div>
+      <ul class="impl-bullets">
+        <li>The three-tier differentiation that emerged post-Agrogalaxy is now the correct framework: (1) large trader / cooperative obligors with diversified CPR portfolios — investment grade risk; (2) mid-size input distributors with concentrated farm exposure — high yield with meaningful binary tail; (3) direct farm-level CPR structures — not institutional credit.</li>
+        <li>Belagrícola and Cotribá (both showing stress in late 2025) confirm the pattern: the mid-tier distributor is the structural weak point of the stack. Exposure to this segment via CRA deserves a materially higher spread than current market pricing implies.</li>
+        <li>Short-duration CRA with investment-grade originator obligors is the highest risk-adjusted position in Brazilian agro credit today. Long-duration farm-level structures are not. The market is not fully pricing this distinction yet.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- TRIGGER FRAMEWORK -->
+  <div class="triggers">
+    <div class="trigger-hed">
+      <div class="trigger-hed-text">Risk signals — what to watch in the stack</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">CPR renegotiation uptick</div>
+      <div class="trigger-then">Leading indicator of farm-level stress. Watch MAPA's CPR registry data monthly — a volume increase in extensions precedes FIAGRO mark-downs by 30–60 days.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">FIAGRO secondary discount widens</div>
+      <div class="trigger-then">Listed FIAGROs trading at &gt;5% discount to NAV signals retail panic or credit event uncertainty. Monitor CPTR11, XPCA11, JGPX11 as the most liquid reference points.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Mid-tier distributor stress</div>
+      <div class="trigger-then">Belagrícola / Cotribá pattern: extrajudicial recovery followed by CRA cross-default. Any announcement of covenant breach by a mid-size input distributor is a read-through to CRA portfolios with farm-level exposure.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Regulatory IBS/CBS veto outcome</div>
+      <div class="trigger-then">If Congress overturns the presidential veto, FIAGROs become liable for new consumption taxes — changing the product's tax economics for retail investors and likely slowing follow-on issuances in 2026.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+    <div class="footer-body">Issue 02 · May 2026 · All data sourced from public information · Not investment advice · São Paulo</div>
+  </div>
+
+</div>
+</body>
+</html>

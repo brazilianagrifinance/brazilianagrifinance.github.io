@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Middle Tier Is Breaking — BAFI Issue 03</title>
+<meta name="description" content="Brazil's input distribution layer is producing the sector's worst distressed cycle in a decade. Lavoro, Cotribá, Raízen, Belagrícola — and what the Iran fertilizer shock does to the next cycle. BAFI Issue 03.">
+<meta property="og:title" content="The Middle Tier Is Breaking — BAFI Issue 03">
+<meta property="og:description" content="R$5B in creditor haircuts. 1,990 agro RJs in 2025. Raízen's R$65B extrajudicial. And now Iran is repricing the inputs that finance the next harvest. BAFI Issue 03.">
+<link rel="canonical" href="https://brazilianagrifinance.github.io/issues/issue-03.html">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --soil:      #2B2318;
+    --clay:      #6B4F35;
+    --straw:     #F2EBD9;
+    --husk:      #DDD3BC;
+    --field:     #E8E0CC;
+    --cerrado:   #3A6B4A;
+    --harvest:   #B85C1A;
+    --harvest-lt:#F5E3D5;
+    --river:     #1E4D6B;
+    --river-lt:  #D4E4EE;
+    --gold:      #8C6D1F;
+    --gold-lt:   #F5EDD4;
+    --danger:    #8B1A1A;
+    --danger-lt: #F5D5D5;
+
+    --sans: 'Barlow', system-ui, sans-serif;
+    --serif: 'Spectral', Georgia, serif;
+  }
+
+  body {
+    background: #C8C0B0;
+    font-family: var(--sans);
+    color: var(--soil);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrapper {
+    max-width: 660px;
+    margin: 0 auto;
+    background: var(--straw);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--soil);
+    padding: 30px 48px 26px;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .pub-name {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--straw);
+  }
+
+  .pub-name span { color: var(--harvest); }
+  .pub-issue {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    letter-spacing: 0.1em;
+  }
+
+  .header-tagline {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 300;
+    font-style: italic;
+    color: #7a6a55;
+    line-height: 1.5;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 40px 48px 32px;
+    border-bottom: 2px solid var(--soil);
+  }
+
+  .kicker {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 14px;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--soil);
+    margin-bottom: 18px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-deck {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--clay);
+  }
+
+  /* ── BIG STATS ── */
+  .big-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .big-stat {
+    padding: 24px 24px;
+    border-right: 1px solid var(--husk);
+  }
+
+  .big-stat:last-child { border-right: none; }
+  .big-stat:first-child { background: var(--danger); }
+
+  .stat-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .big-stat:first-child .stat-label { color: #c27a7a; }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1;
+    color: var(--soil);
+    letter-spacing: -0.03em;
+  }
+
+  .big-stat:first-child .stat-num { color: var(--straw); }
+
+  .stat-unit {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .stat-delta {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 8px;
+  }
+
+  .up   { color: var(--cerrado); }
+  .down { color: var(--harvest); }
+  .alarm { color: var(--danger); }
+
+  .stat-note {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--clay);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
+  .big-stat:first-child .stat-note { color: #c27a7a; }
+
+  /* ── BODY ── */
+  .body { padding: 38px 48px; }
+
+  .body p {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.82;
+    color: #2e2416;
+    margin-bottom: 18px;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--soil);
+    margin: 36px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin: 28px 0 10px;
+  }
+
+  /* ── CHART BLOCK ── */
+  .chart-block {
+    background: white;
+    border: 1px solid var(--husk);
+    margin: 26px 0;
+    overflow: hidden;
+  }
+
+  .chart-hed {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid var(--husk);
+    background: var(--field);
+  }
+
+  .chart-title {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--soil);
+  }
+
+  .chart-note {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    color: var(--clay);
+    font-style: italic;
+    flex-shrink: 0;
+  }
+
+  .chart-inner { padding: 18px 20px; }
+
+  .chart-src {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 400;
+    color: var(--clay);
+    padding: 7px 18px 9px;
+    border-top: 1px solid var(--husk);
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+  }
+
+  /* ── PULL QUOTE ── */
+  .pull {
+    padding: 26px 30px;
+    border-left: 5px solid var(--soil);
+    background: var(--field);
+    margin: 28px 0;
+  }
+
+  .pull p {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--soil);
+    margin: 0;
+  }
+
+  .pull cite {
+    display: block;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-top: 12px;
+    font-style: normal;
+  }
+
+  /* ── CASE STUDY BLOCKS ── */
+  .case-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--husk);
+    margin: 26px 0;
+    overflow: hidden;
+  }
+
+  .case-header {
+    background: var(--soil);
+    padding: 10px 18px;
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .case-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .case-row:last-child { border-bottom: none; }
+
+  .case-name {
+    width: 130px;
+    flex-shrink: 0;
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .case-label {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--straw);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .case-sub {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 300;
+    margin-top: 3px;
+  }
+
+  .case-body {
+    flex: 1;
+    padding: 14px 16px;
+    background: white;
+    border-left: 1px solid var(--husk);
+  }
+
+  .case-debt {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--soil);
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+  }
+
+  .case-status {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .status-re    { color: #8C6D1F; }
+  .status-rj    { color: var(--danger); }
+  .status-active { color: var(--cerrado); }
+
+  .case-desc {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.55;
+  }
+
+  .case-tag {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    margin-top: 6px;
+    border-radius: 2px;
+  }
+
+  .tag-red { background: var(--danger-lt); color: var(--danger); }
+  .tag-amber { background: var(--harvest-lt); color: var(--harvest); }
+  .tag-green { background: #d4eada; color: var(--cerrado); }
+
+  /* ── INSIGHT BOX ── */
+  .insight-box {
+    margin-top: 14px;
+    padding: 11px 14px;
+    background: var(--harvest-lt);
+    border-left: 4px solid var(--harvest);
+  }
+
+  .insight-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .insight-text {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    margin-top: 4px;
+    line-height: 1.55;
+  }
+
+  /* ── DANGER BOX ── */
+  .danger-box {
+    padding: 11px 14px;
+    background: var(--danger-lt);
+    border-left: 4px solid var(--danger);
+    margin: 18px 0;
+  }
+
+  .danger-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--danger);
+    margin-bottom: 4px;
+  }
+
+  .danger-text {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.55;
+  }
+
+  /* ── GOLD BOX ── */
+  .gold-box {
+    background: var(--gold-lt);
+    border: 1px solid #c9aa60;
+    border-left: 4px solid var(--gold);
+    padding: 14px 16px;
+    margin: 22px 0;
+  }
+
+  .gold-label {
+    font-family: var(--sans);
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .gold-text {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.55;
+  }
+
+  /* ── RJ BAR CHART ── */
+  .bar-wrap { display: flex; flex-direction: column; gap: 10px; }
+
+  .bar-row { display: flex; align-items: center; gap: 10px; }
+
+  .bar-lbl {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--soil);
+    width: 48px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 24px;
+    background: var(--husk);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 9px;
+  }
+
+  .bar-val {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+  }
+
+  /* ── TRANSMISSION DIAGRAM ── */
+  .transmission {
+    background: var(--field);
+    border: 1px solid var(--husk);
+    padding: 20px 22px;
+    margin: 26px 0;
+  }
+
+  .trans-title {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 16px;
+  }
+
+  .trans-chain {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .trans-step {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .trans-connector {
+    width: 36px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .trans-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 14px;
+  }
+
+  .trans-line {
+    width: 2px;
+    flex: 1;
+    margin: 2px 0;
+  }
+
+  .trans-node {
+    flex: 1;
+    padding: 10px 14px;
+    margin-bottom: 6px;
+    background: white;
+    border: 1px solid var(--husk);
+  }
+
+  .trans-node-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+
+  .trans-node-text {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.45;
+  }
+
+  /* ── FERTILIZER SECTION HEADER ── */
+  .section-divider {
+    background: var(--river);
+    padding: 20px 48px;
+    margin: 0;
+  }
+
+  .section-divider-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: #4a8aaa;
+    margin-bottom: 8px;
+  }
+
+  .section-divider-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--straw);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+
+  .section-divider-deck {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: #7a9aaa;
+    line-height: 1.6;
+    margin-top: 8px;
+  }
+
+  /* ── FERTILIZER IMPACT TABLE ── */
+  .fert-table {
+    border: 1px solid var(--husk);
+    margin: 26px 0;
+    overflow: hidden;
+  }
+
+  .fert-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: var(--soil);
+  }
+
+  .fert-hcell {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #6b5a42;
+    padding: 10px 14px;
+    border-right: 1px solid #3d3020;
+  }
+
+  .fert-hcell:last-child { border-right: none; }
+
+  .fert-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .fert-row:last-child { border-bottom: none; }
+
+  .fert-cell {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    padding: 10px 14px;
+    background: white;
+    border-right: 1px solid var(--husk);
+    line-height: 1.45;
+  }
+
+  .fert-cell:last-child { border-right: none; }
+  .fert-cell:first-child { font-weight: 500; background: var(--field); }
+
+  .fert-accent { color: var(--harvest); font-weight: 600; }
+  .fert-ok { color: var(--cerrado); font-weight: 600; }
+
+  /* ── M&A SECTION ── */
+  .ma-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 22px 0;
+  }
+
+  .ma-card {
+    background: white;
+    border: 1px solid var(--husk);
+    padding: 14px 16px;
+  }
+
+  .ma-card-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .ma-card-title {
+    font-family: var(--serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--soil);
+    line-height: 1.25;
+    margin-bottom: 7px;
+  }
+
+  .ma-card-text {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    font-weight: 300;
+    color: var(--soil);
+    line-height: 1.5;
+  }
+
+  /* ── TRADING FLOOR PULSE ── */
+  .pulse {
+    background: #1A1208;
+    padding: 30px 32px;
+    margin: 32px 0 0;
+    border-top: 3px solid var(--harvest);
+  }
+
+  .pulse-header {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 6px;
+  }
+
+  .pulse-subhead {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 300;
+    font-style: italic;
+    color: #5a4a32;
+    margin-bottom: 20px;
+  }
+
+  .pulse-body {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: #d4c4a8;
+  }
+
+  .pulse-body p { margin-bottom: 14px; }
+  .pulse-body p:last-child { margin-bottom: 0; }
+
+  /* ── IMPLICATIONS ── */
+  .implications {
+    background: var(--soil);
+    padding: 30px 32px;
+    margin: 0;
+  }
+
+  .impl-header {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--harvest);
+    margin-bottom: 22px;
+  }
+
+  .impl-block {
+    margin-bottom: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #3d3020;
+  }
+
+  .impl-block:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .impl-role {
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--clay);
+    margin-bottom: 10px;
+  }
+
+  .impl-bullets {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .impl-bullets li {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--straw);
+    line-height: 1.6;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .impl-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--harvest);
+    font-weight: 600;
+  }
+
+  /* ── TRIGGERS ── */
+  .triggers {
+    overflow: hidden;
+    border: 1px solid var(--husk);
+  }
+
+  .trigger-hed {
+    background: var(--soil);
+    padding: 12px 20px;
+  }
+
+  .trigger-hed-text {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--harvest);
+  }
+
+  .trigger-row {
+    display: flex;
+    align-items: stretch;
+    border-bottom: 1px solid var(--husk);
+  }
+
+  .trigger-row:last-child { border-bottom: none; }
+
+  .trigger-if {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--soil);
+    background: var(--husk);
+    padding: 12px 14px;
+    width: 170px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    line-height: 1.4;
+  }
+
+  .trigger-then {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--soil);
+    padding: 12px 16px;
+    flex: 1;
+    line-height: 1.55;
+    display: flex;
+    align-items: center;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--soil);
+    padding: 26px 48px;
+    border-top: 3px solid var(--harvest);
+  }
+
+  .footer-name {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--straw);
+    margin-bottom: 8px;
+  }
+
+  .footer-name span { color: var(--harvest); }
+
+  .footer-body {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 300;
+    color: #4a3d2a;
+    line-height: 1.7;
+  }
+
+  .rule { border: none; border-top: 1px solid var(--husk); margin: 24px 0; }
+
+  .cf::after { content: ''; display: table; clear: both; }
+
+  .float-stat {
+    float: right;
+    margin: 4px 0 20px 26px;
+    padding: 22px 20px;
+    background: var(--danger);
+    text-align: center;
+    width: 148px;
+    flex-shrink: 0;
+  }
+
+  .float-num {
+    font-family: var(--serif);
+    font-size: 48px;
+    font-weight: 600;
+    color: var(--straw);
+    line-height: 1;
+    letter-spacing: -0.03em;
+  }
+
+  .float-label {
+    font-family: var(--sans);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #c27a7a;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .float-delta {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    color: #f5c0c0;
+    margin-top: 7px;
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="pub-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+      <div class="pub-issue">Issue 03 · May 2026</div>
+    </div>
+    <div class="header-tagline">Mapping the financial flows behind Brazil's agricultural markets — for the people who allocate capital into them.</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kicker">Distressed Cycle · Lead Story</div>
+    <h1>The Middle Tier Is Breaking</h1>
+    <p class="hero-deck">Brazil's input distribution layer — the segment that sits between the capital market and the farm gate — is producing the worst distressed cycle the sector has seen in a decade. Lavoro, Belagrícola, Cotribá, Raízen. R$5 billion in confirmed creditor haircuts. 1,990 agro recuperações judiciais in 2025 alone. And now the Iran conflict is repricing the fertilizers that finance the next harvest — before this cycle has even been resolved.</p>
+  </div>
+
+  <!-- BIG STATS -->
+  <div class="big-stats">
+    <div class="big-stat">
+      <div class="stat-label">Agro RJs — 2025</div>
+      <div class="stat-num">1,990</div>
+      <div class="stat-delta alarm">+56.4% vs. 2024</div>
+      <div class="stat-note">Record. 6× the national average rate</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">Creditor Haircuts — Revendas</div>
+      <div class="stat-num">R$5<span class="stat-unit">B</span></div>
+      <div class="stat-delta down">Agrogalaxy + Lavoro + Belagrícola</div>
+      <div class="stat-note">Confirmed write-offs across three cases</div>
+    </div>
+    <div class="big-stat">
+      <div class="stat-label">Raízen RE Debt</div>
+      <div class="stat-num">R$65<span class="stat-unit">B</span></div>
+      <div class="stat-delta alarm">Largest extrajudicial on record</div>
+      <div class="stat-note">R$13.8B in CRAs and debentures alone</div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <p>The Agrogalaxy filing in September 2024 was treated as an isolated episode — a consolidator that over-levered into the wrong cycle. Eighteen months later, the narrative of containment is no longer credible. What is unfolding across the Brazilian agro credit system is not a series of idiosyncratic events. It is a structural failure of the distribution layer: the companies that stand between capital markets and the farm gate, absorbing risk from both directions without ever having been priced for it.</p>
+
+    <p>Understanding why requires mapping the mechanism, not just the casualties.</p>
+
+    <h3>The anatomy of the failure</h3>
+
+    <p>The input distributor sits in an inherently difficult position. On the liability side, it raises capital from banks, CRA investors, and FIAGRO holders to finance the inventory it needs to supply producers at planting time. On the asset side, it extends credit to farmers — often via barter CPRs — and waits for harvest to collect. When the farmer's margin collapses, collections slow. When the credit market tightens, the distributor's funding cost rises. When both happen simultaneously — which is precisely what occurred in the 2023–2025 cycle — the middle of the chain is squeezed from both ends.</p>
+
+    <p>The distribuidora model was designed for a world where input prices were stable, farm margins were healthy, and credit was cheap. Between 2021 and 2022, all three conditions held. Lavoro, Agrogalaxy, and Belagrícola expanded aggressively, using cheap debt to consolidate a fragmented market. The thesis was rational: scale brings purchasing power, logistics efficiency, and data advantages. The problem was the financing structure: leverage was piled on at peak margins, with no buffer for the cycle that followed.</p>
+
+    <p>The cycle that followed was severe. Soybean prices fell from record highs. Input costs — particularly fertilizers — remained elevated. Brazilian producers, after two years of exceptional returns, faced a margin compression that CONAB estimated brought Mato Grosso soy gross margins from ~$440/acre in 2021/22 to near zero in 2025/26. The farmer's ability to service barter CPRs deteriorated. The distributor's receivables aged. The CRA covenants triggered. The FIAGRO mark-downs followed.</p>
+
+    <!-- DISTRESSED CASES TABLE -->
+    <div class="case-grid">
+      <div class="case-header">Distressed Cycle Map — Key Cases · 2024–2026</div>
+
+      <div class="case-row">
+        <div class="case-name" style="background:#6B1A1A;">
+          <div class="case-label">Agro&shy;galaxy</div>
+          <div class="case-sub" style="color:#c27a7a;">Input dist. · Aqua Capital</div>
+        </div>
+        <div class="case-body">
+          <div class="case-debt">R$4.6B → R$1.8B</div>
+          <div class="case-status status-rj">Recuperação Judicial — Concluded</div>
+          <div class="case-desc">Filed Sep 2024. Triggered mark-downs across 11 FIAGROs simultaneously. Debt cut 60%+ under approved plan. Template case: established that FIAGRO correlation is binary, not spread-driven. CRAs across multiple funds became illiquid overnight.</div>
+          <div><span class="case-tag tag-green">Plan approved</span> <span class="case-tag tag-red">R$2.8B haircut confirmed</span></div>
+        </div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-name" style="background:#8B3A10;">
+          <div class="case-label">Lavoro</div>
+          <div class="case-sub" style="color:#d4956a;">Revendas · Patria → AGI</div>
+        </div>
+        <div class="case-body">
+          <div class="case-debt">R$2.5B (suppliers) + R$420M CRA</div>
+          <div class="case-status status-re">Recuperação Extrajudicial — RE homologated Nov 2025</div>
+          <div class="case-desc">Patria sold to distressed specialist AGI in March 2026. CRA default triggered on April 17 — Ecoagro declared accelerated maturity on R$420M (2023 issuance, 14.2% + CDI+3% series). JGP and BB Asset hold exposure. Assembleia de cotistas convened within 5 business days. RE for suppliers concluded; CRA default opens a new legal front.</div>
+          <div><span class="case-tag tag-amber">CRA default Apr 2026</span> <span class="case-tag tag-red">New creditor front open</span></div>
+        </div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-name" style="background:#2B4A2B;">
+          <div class="case-label">Bela&shy;agrícola</div>
+          <div class="case-sub" style="color:#78a878;">Input dist. · Pengdu (China)</div>
+        </div>
+        <div class="case-body">
+          <div class="case-debt">R$3.2B total; R$1.8B in RE</div>
+          <div class="case-status status-re">Recuperação Extrajudicial — Contested</div>
+          <div class="case-desc">Controlled by Chinese group Pengdu. Court rejected consolidated RE in Feb 2026 — STJ precedent bars consolidation across CNPJs. Stay period expired March 30. Company refiled with trading arm (DKBR) excluded, restructuring only the retail revenda: R$1.8B. Vert Securitizadora (R$591M) is largest creditor. Alvarez & Marsal engaged. Outcome uncertain as of late April.</div>
+          <div><span class="case-tag tag-red">Stay period expired</span> <span class="case-tag tag-amber">Refiled Apr 2026</span></div>
+        </div>
+      </div>
+
+      <div class="case-row">
+        <div class="case-name" style="background:#1E3A55;">
+          <div class="case-label">Cotribá</div>
+          <div class="case-sub" style="color:#4a8aaa;">Cooperative · RS · Est. 1911</div>
+        </div>
+        <div class="case-body">
+          <div class="case-debt">R$1B+ (R$400M immediate)</div>
+          <div class="case-status status-rj">RJ Attempt — Legal impasse</div>
+          <div class="case-desc">Brazil's oldest agricultural cooperative. EBITDA down 65% in 2024; R$46M net loss; R$5.8M cash at year-end. First RJ attempt blocked by TJ-RS in Dec 2025 — cooperatives not covered by Lei 11.101/2005. Desisted Feb 2026. Refiled April 2026 with new legal team and new CEO (Paulo Goulart, ex-Gocil turnaround). Has CRA (R$150M, Ecoagro, Cargill-backed, 2027 maturity) and FIDC in market. Asset sales target R$400M. Legal resolution unclear.</div>
+          <div><span class="case-tag tag-red">Cooperative RJ = legal grey zone</span> <span class="case-tag tag-amber">Second attempt ongoing</span></div>
+        </div>
+      </div>
+
+      <div class="case-row" style="border-bottom:none;">
+        <div class="case-name" style="background:#3A2A1A;">
+          <div class="case-label">Raízen</div>
+          <div class="case-sub" style="color:#8a6a42;">Shell/Cosan JV · Sugar/Ethanol</div>
+        </div>
+        <div class="case-body">
+          <div class="case-debt">R$65.1B subject to RE; R$98.6B total</div>
+          <div class="case-status status-re">Recuperação Extrajudicial — In negotiation</div>
+          <div class="case-desc">Largest extrajudicial restructuring in Brazilian history. Filed March 11, 2026. Selic at 15%, drought-driven harvest failures, Argentine volatility: leverage hit 5.3× ND/EBITDA. Shell committed R$3.5B injection. Plan proposes converting 45% of debt to equity at ~40¢/dollar, potentially giving creditors up to 70-90% of voting capital. Bondholders pushing for R$8B injection + management changes + Ometto removal. Stay period: 180 days. R$13.8B in CRAs and debentures at risk of mark-to-market; Rumo debenture spreads already widening due to Cosan contagion.</div>
+          <div><span class="case-tag tag-red">Largest RE ever</span> <span class="case-tag tag-amber">Debt-to-equity conversion likely</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>The transmission mechanism</h3>
+
+    <p>The cases above are not independent. They share a common transmission channel: CRA-backed financing structures that connected retail and institutional investors to farm-level risk through a distribution intermediary — without adequate disclosure of that risk at any point in the chain. Understanding how the stress travels matters as much as knowing which companies are involved.</p>
+
+    <!-- TRANSMISSION CHAIN -->
+    <div class="transmission">
+      <div class="trans-title">How distress travels — from farm gate to capital market</div>
+      <div class="trans-chain">
+
+        <div class="trans-step">
+          <div class="trans-connector">
+            <div class="trans-dot" style="background:#B85C1A;"></div>
+            <div class="trans-line" style="background:#DDD3BC;"></div>
+          </div>
+          <div class="trans-node">
+            <div class="trans-node-label" style="color:#B85C1A;">Stage 1 — Farm level</div>
+            <div class="trans-node-text">Margin compression → producer delays or defaults on barter CPR deliveries. Distributor's receivables deteriorate. Collections slow. Farm-level stress is invisible to CRA investors at this stage.</div>
+          </div>
+        </div>
+
+        <div class="trans-step">
+          <div class="trans-connector">
+            <div class="trans-dot" style="background:#8B1A1A;"></div>
+            <div class="trans-line" style="background:#DDD3BC;"></div>
+          </div>
+          <div class="trans-node">
+            <div class="trans-node-label" style="color:#8B1A1A;">Stage 2 — Distributor balance sheet</div>
+            <div class="trans-node-text">Aged receivables force the distributor to draw on credit lines. Funding costs rise (Selic 15%). Covenants breach on debentures or CDCA pledged to securitizers. Company enters RE or RJ. Creditors get haircuts of 40–60%.</div>
+          </div>
+        </div>
+
+        <div class="trans-step">
+          <div class="trans-connector">
+            <div class="trans-dot" style="background:#6B4F35;"></div>
+            <div class="trans-line" style="background:#DDD3BC;"></div>
+          </div>
+          <div class="trans-node">
+            <div class="trans-node-label" style="color:#6B4F35;">Stage 3 — CRA structure</div>
+            <div class="trans-node-text">Securitizer (Ecoagro, Vert, True) declares accelerated maturity or provisions the collateral. Secondary market for the CRA freezes. Multiple funds holding the same issuance mark down simultaneously — the Agrogalaxy pattern.</div>
+          </div>
+        </div>
+
+        <div class="trans-step">
+          <div class="trans-connector">
+            <div class="trans-dot" style="background:#2B2318;"></div>
+            <div class="trans-line" style="background:#DDD3BC; opacity:0;"></div>
+          </div>
+          <div class="trans-node" style="background:var(--soil);border-color:var(--soil);">
+            <div class="trans-node-label" style="color:#6b5a42;">Stage 4 — FIAGRO / Investor</div>
+            <div class="trans-node-text" style="color:var(--straw);">B3-listed FIAGRO units fall 6–8% on the day of the credit event. Retail panic selling widens the gap between NAV and unit price. Liquidity mismatch: underlying CRAs are illiquid, units trade daily. Dividend suspension follows provisioning. The investor sees the result of a farm-level default that started 6–12 months earlier.</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="insight-box" style="margin-top:14px;">
+        <div class="insight-label">The lag that matters</div>
+        <div class="insight-text">The CPR renegotiation that signals farm-level stress precedes FIAGRO mark-downs by 30–60 days. By the time a credit event appears in a fund's NAV, the underlying distress has been building for months. The leading indicator is not in the FIAGRO reports — it's in MAPA's CPR registry data, which shows extension volumes before defaults crystallize.</div>
+      </div>
+    </div>
+
+    <div class="pull">
+      <p>"Three revenda networks, R$5 billion in haircuts, and the market is still pricing mid-tier distributor CRAs at spreads that don't reflect the structural weakness of the model. The lesson of Agrogalaxy hasn't been fully learned."</p>
+      <cite>— BAFI analysis · April 2026</cite>
+    </div>
+
+    <h3>The cram down problem — and why minority creditors are exposed</h3>
+
+    <p>The Lavoro and Belagrícola cases have exposed a legal architecture that systematically disadvantages smaller creditors in recuperação extrajudicial proceedings. The mechanism — the cram down — allows a majority of creditors by value to bind dissenters to a restructuring plan they had no meaningful role in designing.</p>
+
+    <p>In the Brazilian RE structure, the debtor selects which creditors to negotiate with. The majority is assembled privately, before the plan reaches court. A minority creditor often discovers it is subject to a plan only when the homologação petition has already been filed — after the negotiation is over. The Agribiz columnist Fábio Giorgi, writing this week, identified the core problem precisely: the dissenting creditor has formal recourse but no practical influence. The assembleia geral de credores in a recuperação judicial creates at least a deliberative space — however imperfect — that the RE process lacks entirely.</p>
+
+    <p>For institutional investors, the implication is structural: exposure to mid-tier distributor CRAs via RE structures carries tail risk that is not captured in spread-over-CDI. The haircut you absorb is not priced in — it is imposed by a majority you weren't part of assembling.</p>
+
+    <div class="danger-box">
+      <div class="danger-label">Legal risk — cooperatives</div>
+      <div class="danger-text">The Cotribá saga has exposed a gap in Brazilian insolvency law with no clean resolution. Cooperatives are explicitly excluded from Lei 11.101/2005 — the same law that governs both recuperação judicial and extrajudicial. The only formal path for a cooperative in financial distress is liquidação extrajudicial under Lei 5.764/1971, which is functionally equivalent to a wind-down. Every Cotribá RJ attempt has run into this wall. The new filing (April 2026, new legal team, Freire Assis Sakamoto) is betting on a creative interpretation of cooperative law that has no Supreme Court precedent. For CRA investors with Cotribá exposure (including the R$150M Ecoagro issuance backed by Cargill contracts), the legal resolution timeline is genuinely uncertain — and the cooperative's assets are being sold faster than the legal process moves.</div>
+    </div>
+
+    <!-- RJ GROWTH CHART -->
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">Agro Recuperações Judiciais — Annual Volume</div>
+        <div class="chart-note">Requests filed · includes PF, PJ producers & agro companies</div>
+      </div>
+      <div class="chart-inner">
+        <div class="bar-wrap">
+          <div class="bar-row">
+            <div class="bar-lbl">2022</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:20%;background:#6B4F35;">
+                <span class="bar-val">~380</span>
+              </div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">2023</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:28%;background:#5a4020;">
+                <span class="bar-val">534</span>
+              </div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">2024</div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width:64%;background:#8B3A10;">
+                <span class="bar-val">1,272 &nbsp;·&nbsp; +138% vs. 2022</span>
+              </div>
+            </div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl" style="color:#8B1A1A;font-weight:700;">2025</div>
+            <div class="bar-track" style="background:#F5D5D5;">
+              <div class="bar-fill" style="width:100%;background:#8B1A1A;">
+                <span class="bar-val">1,990 &nbsp;·&nbsp; Record · +56% vs. 2024 · 6× national avg. rate</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="insight-box" style="margin-top:14px;">
+          <div class="insight-label">Composition of 2025 filings</div>
+          <div class="insight-text">Producers (PF): 853 (+50.7%). Producers (PJ): 753 (+84.1%). Agro companies: 384 (+29.3%). The fastest growth is in PJ producers — structured farming operations, often levered via CPRs — not small family farms. Agro is now 30.1% of all Brazilian RJs and carries a rate of 13.53 per 1,000 companies — versus a national average of 2.13.</div>
+        </div>
+      </div>
+      <div class="chart-src">Source: Serasa Experian · Portal do Cooperativismo Financeiro (Mar 2026) · BAFI analysis</div>
+    </div>
+
+    <h3>Raízen — a different animal, but the same cycle</h3>
+
+    <p>Raízen does not belong to the revenda crisis in its operational form — it is a sugar and ethanol producer, not an input distributor. But it belongs to the same cycle thesis: a company that levered aggressively during the high-margin phase of 2020–2022, financed its expansion with debt at a cost structure that assumed a lower Selic for longer, and met a simultaneous shock of higher rates, a drought-impacted harvest, and margin compression.</p>
+
+    <div class="float-stat cf">
+      <div class="float-num">5.3×</div>
+      <div class="float-label">ND/EBITDA at filing — vs. ~2× covenant norm</div>
+      <div class="float-delta">Selic 15% in 2026</div>
+    </div>
+
+    <div class="cf">
+      <p>The numbers are structurally different. Raízen's R$65.1 billion RE — the largest in Brazilian corporate history — dwarfs the distributor cases. Shell has committed R$3.5 billion in fresh capital. The plan proposes converting at least 45% of the subject debt to equity, precified at ~40 cents per dollar (below the ~50¢ current market price), with creditors potentially receiving up to 70–90% of voting capital depending on the final negotiated outcome. Rubens Ometto's removal from the presidency is being demanded by banks; bondholders are pushing for an R$8 billion injection and deeper governance changes.</p>
+
+      <p>The capital markets read-through is specific: R$13.8 billion in CRAs and debentures are directly affected. And because Raízen and Rumo share a common shareholder (Cosan), the credit event has already produced spread widening on Rumo's debentures — assets most institutional investors would categorize as infrastructure credit, not agro distressed. That contagion channel — from a sugar/ethanol RE to an infrastructure bond — is the clearest evidence that Brazilian agro credit risk is not siloed the way it appears in an allocation spreadsheet.</p>
+    </div>
+
+    <div class="gold-box">
+      <div class="gold-label">The debt-to-equity dynamic</div>
+      <div class="gold-text">The Raízen restructuring — if it closes with creditors holding 70%+ of voting capital — would be the largest involuntary equity transfer in Brazilian agri-business history. International distressed funds, Brazilian banks, and bondholders would become the dominant shareholders of the country's second-largest sugar/ethanol group. This creates a potential secondary M&A opportunity: once the dust settles, a strategic buyer (Cosan itself, a sovereign wealth fund, or a global energy major) could acquire a controlling stake from creditors who have no natural home for agro equity. Watch for that second-order deal if the RE closes in Q3 2026.</div>
+    </div>
+
+  </div><!-- end .body -->
+
+  <!-- SECTION DIVIDER — IRAN / FERTILIZER -->
+  <div class="section-divider">
+    <div class="section-divider-label">Part II · The Next Cycle Risk</div>
+    <div class="section-divider-title">Iran, Hormuz, and the Input Cost Shock That Nobody Is Modeling for 2027</div>
+    <div class="section-divider-deck">The current distressed cycle is a 2022–2025 story. The Iran conflict is a 2026–2027 story. The problem is that both are hitting the same balance sheet at the same time.</div>
+  </div>
+
+  <div class="body">
+
+    <p>On February 28, 2026, US and Israeli military strikes against Iran triggered the partial closure of the Strait of Hormuz — the chokepoint responsible for moving roughly one-third of globally seaborne traded fertilizer. The conflict has since de-escalated in fits and starts, but the physical and pricing consequences for Brazilian agriculture have been immediate and, for the next planting cycle, potentially structural.</p>
+
+    <p>Brazil is the world's largest fertilizer importer. It imported approximately 49 million metric tons in 2025 — a figure that covers over 85% of domestic agricultural consumption, since the country has no meaningful capacity to produce nitrogen fertilizer domestically. The Middle East is not Brazil's only supplier, but it is a critical one: urea from the Gulf, phosphates routed through Hormuz-dependent logistics, and the global repricing that results from any supply disruption hits Brazil disproportionately.</p>
+
+    <h4>The price shock in numbers</h4>
+
+    <!-- FERTILIZER IMPACT TABLE -->
+    <div class="fert-table">
+      <div class="fert-header">
+        <div class="fert-hcell">Fertilizer / Input</div>
+        <div class="fert-hcell">Price Move (post-Feb 28)</div>
+        <div class="fert-hcell">Brazil-Specific Context</div>
+      </div>
+      <div class="fert-row">
+        <div class="fert-cell">Urea (nitrogen)</div>
+        <div class="fert-cell"><span class="fert-accent">+77%</span> Dec 2025 → Mar 9, 2026<br><span style="font-size:10px;color:#6B4F35;">NOLA hub: $516 → $683/mt</span></div>
+        <div class="fert-cell">Brazil urea imports fell 33% YoY. ~50% of global urea comes from Middle East. Russia/Qatar are top non-Gulf alternatives — logistics adjustment takes 60–90 days.</div>
+      </div>
+      <div class="fert-row">
+        <div class="fert-cell">Phosphates (MAP/DAP)</div>
+        <div class="fert-cell"><span class="fert-accent">Elevated</span><br><span style="font-size:10px;color:#6B4F35;">Saudi Arabia = major source</span></div>
+        <div class="fert-cell">Brazil relies primarily on Morocco and Russia. Strait disruption affects Saudi phosphate logistics. Morocco alternative available but premiums widened.</div>
+      </div>
+      <div class="fert-row">
+        <div class="fert-cell">Potash (MOP)</div>
+        <div class="fert-cell"><span class="fert-ok">Relatively contained</span><br><span style="font-size:10px;color:#6B4F35;">Gulf not a major producer</span></div>
+        <div class="fert-cell">Brazil sources primarily from Canada, Russia, Belarus. Existing sanctions structure unchanged. Russia exports exempt from Western sanctions — actively expanding into LatAm markets.</div>
+      </div>
+      <div class="fert-row">
+        <div class="fert-cell">Soybean oil futures</div>
+        <div class="fert-cell"><span class="fert-ok">+High</span><br><span style="font-size:10px;color:#6B4F35;">2.5-yr high within first week</span></div>
+        <div class="fert-cell">Soybeans don't require nitrogen. Higher energy prices → biofuel premium → soy oil demand spike. Partial positive offset for the producer's revenue line. Does not help the cost side.</div>
+      </div>
+    </div>
+
+    <h3>Why Brazil is more exposed than the US</h3>
+
+    <p>The United States imports about one-third of its finished phosphate products (half from Saudi Arabia) and relies on Russia and Qatar for urea. Brazil's exposure is structurally deeper: imports cover over 85% of domestic fertilizer consumption, and the country has no domestic production alternative to fall back on if Gulf supplies are disrupted for an extended period.</p>
+
+    <p>Farmdoc researchers at the University of Illinois noted explicitly that Brazil faces greater near-term risk than the US from the Hormuz disruption, precisely because import dependency is higher and domestic substitution capacity is near zero. The Strait is now a strategic chokepoint for Brazilian agriculture in a way it has never been before — not because Brazil buys directly from Iran, but because the global supply and pricing system for nitrogen runs through the Gulf.</p>
+
+    <h3>The second-order problem: input cost + distributor stress + credit rationing = area contraction</h3>
+
+    <p>This is the read that no published model appears to be capturing for the 2026/27 Brazilian soy cycle. The logic runs as follows:</p>
+
+    <p>Brazilian producers entered the current cycle with margins near zero (see Issue 01). The strongest farmers with the best balance sheets are holding grain unpriced because the BRL appreciation has compressed their revenue in reais. The most levered producers — those who were relying on input distributors for barter financing — are now dealing with distributors that are themselves in financial distress, renegotiating terms, or simply not supplying on the same credit conditions as before.</p>
+
+    <p>Now add the fertilizer shock. A producer who needs to finance the next planting cycle is facing: (1) an input supplier that may no longer offer the same barter credit terms, because Lavoro, Belagrícola, and others are cutting exposure precisely at this moment; (2) urea at 77% above December prices; and (3) a CPR-based financing structure that requires him to pre-sell grain at current depressed prices to access planting capital. The combination reduces the economic incentive to plant the same area.</p>
+
+    <p>CSIS analysts noted that corn, which is far more nitrogen-intensive than soybeans, is the most exposed crop to a urea shock. But soybean farmers also grow corn — the safrinha milho that follows soy on the same land in Mato Grosso is the second crop that pays the year's fixed costs. If corn economics deteriorate, the whole rotation economics change, and producers reduce total planted area.</p>
+
+    <div class="chart-block">
+      <div class="chart-hed">
+        <div class="chart-title">The 2026/27 Planting Decision — Pressures Stacking</div>
+        <div class="chart-note">Framework for area contraction risk</div>
+      </div>
+      <div class="chart-inner">
+        <div style="display:flex;flex-direction:column;gap:8px;">
+
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--husk);">
+            <div style="width:140px;flex-shrink:0;background:#8B1A1A;padding:12px 14px;display:flex;align-items:center;">
+              <div style="font-family:var(--sans);font-size:10px;font-weight:700;color:#f5c0c0;text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;">Margin — Current cycle</div>
+            </div>
+            <div style="flex:1;background:white;padding:12px 14px;">
+              <div style="font-family:var(--sans);font-size:12px;font-weight:300;color:var(--soil);line-height:1.5;">Mato Grosso soy margin ~$0–40/acre. Producer already at or below break-even with BRL at R$4.95. No buffer to absorb input cost increases.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--husk);">
+            <div style="width:140px;flex-shrink:0;background:#8B3A10;padding:12px 14px;display:flex;align-items:center;">
+              <div style="font-family:var(--sans);font-size:10px;font-weight:700;color:#f5c0c0;text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;">Urea — Iran shock</div>
+            </div>
+            <div style="flex:1;background:white;padding:12px 14px;">
+              <div style="font-family:var(--sans);font-size:12px;font-weight:300;color:var(--soil);line-height:1.5;">+77% urea since December. Brazil imports 85%+ of fertilizers. No domestic substitution. If sustained, adds material cost to 2026/27 planting. Safrinha corn (nitrogen-intensive) hit hardest.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--husk);">
+            <div style="width:140px;flex-shrink:0;background:#6B4F35;padding:12px 14px;display:flex;align-items:center;">
+              <div style="font-family:var(--sans);font-size:10px;font-weight:700;color:#d4b88a;text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;">Credit — Distributor stress</div>
+            </div>
+            <div style="flex:1;background:white;padding:12px 14px;">
+              <div style="font-family:var(--sans);font-size:12px;font-weight:300;color:var(--soil);line-height:1.5;">Lavoro, Belagrícola, and smaller revendas cutting barter credit exposure precisely when producers need it. Distributor balance sheets are under pressure; pre-financing capacity reduced. CPR-based barter requires forward grain sales at depressed prices.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--husk);">
+            <div style="width:140px;flex-shrink:0;background:#1E4D6B;padding:12px 14px;display:flex;align-items:center;">
+              <div style="font-family:var(--sans);font-size:10px;font-weight:700;color:#a0c8e0;text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;">Selic — Funding cost</div>
+            </div>
+            <div style="flex:1;background:white;padding:12px 14px;">
+              <div style="font-family:var(--sans);font-size:12px;font-weight:300;color:var(--soil);line-height:1.5;">Selic at 15% in 2026. CPR financing rates are priced at Selic + spread. Every month of elevated rates adds to the carry cost of holding unpriced grain — pushing the producer toward selling even at unfavorable prices, or toward planting less.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:stretch;gap:0;border:1px solid var(--soil);">
+            <div style="width:140px;flex-shrink:0;background:var(--soil);padding:12px 14px;display:flex;align-items:center;">
+              <div style="font-family:var(--sans);font-size:10px;font-weight:700;color:#6b5a42;text-transform:uppercase;letter-spacing:0.1em;line-height:1.4;">Probable outcome</div>
+            </div>
+            <div style="flex:1;background:var(--field);padding:12px 14px;">
+              <div style="font-family:var(--sans);font-size:12px;font-weight:400;color:var(--soil);line-height:1.5;">Area planted in 2026/27 faces contraction risk — particularly in safrinha corn and marginal soy land. This is the supply story that models calibrated to a 179mt record crop are not accounting for. If the Iran shock sustains through July (planting decision window), USDA's 2026/27 Brazil production estimates become directionally too high.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="chart-src">Source: CSIS (Mar 2026) · Farmdoc Daily (Apr 2026) · BAFI analysis · Noria Research (Apr 2026)</div>
+    </div>
+
+    <div class="pull">
+      <p>"Without fertilizers, there is no agriculture. Without stable shipping routes, there is no global food system. Brazil stands at the center of both disruptions simultaneously."</p>
+      <cite>— Noria Research · April 2026 · MENA conflict analysis</cite>
+    </div>
+
+    <h3>Is there a distressed M&A opportunity?</h3>
+
+    <p>The question every allocator in this space is quietly asking: does the current distressed cycle create actionable acquisition opportunities in Brazilian agri-business?</p>
+
+    <p>The honest answer is: yes, but with important caveats on timing, asset type, and entry structure. The opportunity set divides into three categories, each with a different risk-return profile and liquidity horizon.</p>
+
+    <!-- M&A OPPORTUNITY GRID -->
+    <div class="ma-grid">
+
+      <div class="ma-card">
+        <div class="ma-card-label" style="color:var(--cerrado);">Category A — High conviction now</div>
+        <div class="ma-card-title">Distressed CRA / Debt at Discount</div>
+        <div class="ma-card-text">The most liquid entry point. Secondary market CRAs from Agrogalaxy (concluded plan), Cotribá (legal uncertainty), and Lavoro (accelerated maturity) trade at discounts that, depending on recovery assumptions, offer attractive risk-adjusted returns. Requires strong RE/RJ legal expertise and ability to participate in assembleia de cotistas. Not a passive investment.</div>
+      </div>
+
+      <div class="ma-card">
+        <div class="ma-card-label" style="color:#8C6D1F;">Category B — 6–12 month horizon</div>
+        <div class="ma-card-title">Asset Acquisition from Distressed Sellers</div>
+        <div class="ma-card-text">Storage infrastructure, revenda networks (individual stores, not groups), and processing assets are being sold by stressed companies. Cotribá sold its Arroio Grande and Cachoeira do Sul units to Olfar. Belagrícola's DKBR trading arm was carved out of the RE — potentially acquirable. Asset-level deals with clean legal title (verified via due diligence on RE court order) carry limited successão risk under Lei 11.101.</div>
+      </div>
+
+      <div class="ma-card">
+        <div class="ma-card-label" style="color:var(--river);">Category C — 12–24 month horizon</div>
+        <div class="ma-card-title">Equity in Raízen Post-Restructuring</div>
+        <div class="ma-card-text">If creditors receive 70%+ of Raízen equity at ~40¢/$, a strategic or financial buyer acquiring those stakes post-restructuring would be buying into the second-largest sugar/ethanol group at a deep discount to replacement value. The play requires patience (180-day stay period + negotiation + homologação) and appetite for Brazilian energy/bioeconomy complexity. Sovereign wealth funds and global energy majors are the natural buyers.</div>
+      </div>
+
+      <div class="ma-card">
+        <div class="ma-card-label" style="color:var(--harvest);">Category D — Avoid now</div>
+        <div class="ma-card-title">Direct Farm-Level Credit / CPR Structures</div>
+        <div class="ma-card-text">The CPR layer (R$560B, growing 28% YoY) is where the most direct farm-level risk sits and where transparency is lowest. Mid-tier input distributors with concentrated farm exposure — the Belagrícola / Cotribá profile — remain structurally weak. The Iran shock has not yet repriced their cost structure for 2026/27. Wait for clearer visibility on area planted before entering this segment.</div>
+      </div>
+
+    </div>
+
+    <p>The key constraint on distressed M&A activity is not capital availability — international dry powder remains substantial, and Brazilian distressed specialists (Jive, Strategi Capital, and others) are actively deploying. The constraint is deal structuring: RE and RJ assets in Brazil carry complex legal risk around successão trabalhista (labor liability succession) that must be explicitly addressed in any acquisition structure. Deals done via isolated asset purchase under court order (under Lei 11.101 Art. 60) carry the strongest legal protection.</p>
+
+    <p>A secondary constraint is timing: the Selic at 15% means that financing a distressed acquisition with local debt is expensive. Deals that can be funded with international capital at lower cost, or executed with equity only, have an advantage. The compression between seller distress (selling at deep discounts) and buyer financing cost (high Selic) defines the opportunity window — and it narrows as Brazilian rates eventually fall.</p>
+
+  </div><!-- end .body -->
+
+  <!-- TRADING FLOOR PULSE -->
+  <div class="pulse">
+    <div class="pulse-header">Trading Floor Pulse</div>
+    <div class="pulse-subhead">A market perspective from a veteran commodity trader with 40+ years in Brazilian origination.</div>
+    <div class="pulse-body">
+      <p>The wave of distressed filings across the input distribution chain is generating a specific operational effect that credit markets haven't fully priced: origination counterparty risk is rising at exactly the same time that farmer selling is suppressed.</p>
+      <p>When a mid-tier input distributor enters recuperação judicial — or simply stops honoring CPR obligations — the trading company on the other side of that barter contract suddenly has no grain. That is not a credit event for the trading desk. It is an inventory hole, mid-season, in a record 179mt crop. The physical consequence is real: buyers are paying up at port to cover gaps that shouldn't exist in a supply-abundant year. Paranaguá premiums don't fully reflect supply — they partly reflect counterparty collapse in the middle of the chain.</p>
+      <p>The question for the next cycle is whether the Iran-driven urea spike changes the planting calculus for 2026/27. If input costs reprice sharply before the next origination window, levered producers won't plant the same area. That is a 2027 supply story nobody is modeling yet — and the trading desk that gets that call right in August will be positioned well before the consensus figures it out.</p>
+    </div>
+  </div>
+
+  <!-- IMPLICATIONS -->
+  <div class="implications">
+    <div class="impl-header">So what — implications by reader type</div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the credit / structured finance allocator</div>
+      <ul class="impl-bullets">
+        <li>The three-tier differentiation introduced after Agrogalaxy is still the correct framework — but the middle tier is demonstrably weaker than the spreads imply. Belagrícola, Lavoro, and Cotribá all trade in the same "mid-tier" bucket. Treat single-obligor CRA exposure in this segment as binary risk, not credit spread risk.</li>
+        <li>The cram down extrajudicial mechanism means minority creditors in an RE process may be bound to terms they had no role in negotiating. For any CRA with mid-tier distributor exposure, verify your position in the creditor class hierarchy before assuming you have negotiating leverage.</li>
+        <li>Raízen's R$13.8B in CRAs and debentures creates a read-through to related credits (Rumo, Cosan-adjacent structures). Spreads have already widened on Rumo paper. Monitor Cosan's consolidated credit profile as the RE negotiation progresses through Q2.</li>
+        <li>The Cotribá CRA (R$150M, Ecoagro, Cargill-backed) is structurally different from the company's other debt — the Cargill backing provides a credit enhancement that the legal ambiguity around cooperative RJ does not fully undermine. It is not risk-free, but it is not equivalent to an unsecured creditor position.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the commodity fund researcher</div>
+      <ul class="impl-bullets">
+        <li>The 2026/27 Brazil soy area estimate is the number most at risk of being revised down over the next 90 days. The combination of near-zero current margins + 77% urea price increase + reduced barter credit availability creates a planting incentive structure that is materially worse than any model calibrated to the 179mt 2025/26 record crop would assume.</li>
+        <li>Watch the July planting decision window in Mato Grosso as the key signal. If the Iran conflict has not de-escalated and urea prices remain elevated by June, producers will begin reducing safrinha corn area — the crop that most directly drives nitrogen fertilizer demand and which underwrites the fixed-cost structure of the largest soy operations.</li>
+        <li>The Raízen restructuring introduces a new variable into Brazilian ethanol supply: uncertainty about management continuity, capital spending plans, and crushing capacity in the 2026/27 cane season. A creditor-controlled Raízen is not the same strategic entity as a Cosan-controlled one. Ethanol and sugar supply models should reflect this governance uncertainty.</li>
+      </ul>
+    </div>
+
+    <div class="impl-block">
+      <div class="impl-role">For the distressed / special situations investor</div>
+      <ul class="impl-bullets">
+        <li>The most actionable near-term opportunity is secondary-market CRA at discount — specifically in concluded or near-concluded RE/RJ processes where recovery ranges can be modeled. Agrogalaxy is the clearest reference (plan approved, execution underway). Lavoro's CRA accelerated maturity opens a potential secondary entry if the debt trades down.</li>
+        <li>Asset-level acquisitions from stressed companies (storage, individual revenda stores, processing units) should be structured via court-sanctioned Article 60 sale to minimize labor succession risk. The Cotribá asset sales to Olfar are the current template — clean, operationally intact assets sold with explicit court approval.</li>
+        <li>The Raízen equity post-restructuring is the long-dated, highest-conviction opportunity for a patient strategic buyer. If creditors receive 70%+ of voting capital at ~40¢/$, the implied entry valuation for Brazil's second-largest sugar/ethanol group is deeply below replacement value. The 12–18 month window between RE closure and secondary equity sale is the acquisition window.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- TRIGGER FRAMEWORK -->
+  <div class="triggers">
+    <div class="trigger-hed">
+      <div class="trigger-hed-text">Watch list — distressed cycle + fertilizer shock</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Hormuz remains restricted past July 2026</div>
+      <div class="trigger-then">Urea prices sustained at elevated levels through the Brazilian planting window. Risk of measurable area contraction in safrinha corn and marginal soy — begin revising 2026/27 Brazil production estimates downward.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Belagrícola refiled RE homologated</div>
+      <div class="trigger-then">Reduces tail risk for Vert Securitizadora (R$591M exposure). Watch for secondary market trading to resume in the CRA series. Template for how fragmented RE-by-CNPJ works in practice — legal precedent for other multi-entity groups.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Cotribá RJ denied again (TJ-RS)</div>
+      <div class="trigger-then">Forced into liquidação extrajudicial — effectively a wind-down under Lei 5.764. R$150M CRA (Ecoagro/Cargill-backed) becomes a recovery story. Asset fire-sale accelerates. 9,500 cooperative members lose preferred creditor protection. Acquirers of storage assets get a cleaner entry.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Raízen RE creditor agreement closes</div>
+      <div class="trigger-then">~45% debt-to-equity conversion at ~40¢/$ crystallizes. Creditor equity overhang creates a strategic sale opportunity. Watch for sovereign wealth funds or global energy majors as secondary buyers. Rumo debenture spreads should normalize on Cosan credit relief.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">Lavoro CRA default unresolved past 3 business days</div>
+      <div class="trigger-then">Ecoagro executes on guarantees (fiança of Lavoro Agrocomercial, Produtec, Futuragro group). JGP and BB Asset FIAGRO NAV impact crystallizes. Assembleia de cotistas votes on recovery strategy. Watch JGPX11 and any BB Asset FIAGRO with disclosed exposure.</div>
+    </div>
+    <div class="trigger-row">
+      <div class="trigger-if">CPR renegotiation volume spikes in MAPA data</div>
+      <div class="trigger-then">30–60 day leading indicator of the next wave of FIAGRO mark-downs. If June MAPA CPR registry data shows material increase in extensions, Q3 2026 FIAGRO stress is coming. This is the signal to reduce mid-tier distributor CRA exposure before the credit event arrives.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">Brazilian Agri<span>Finance</span> Intelligence</div>
+    <div class="footer-body">Issue 03 · May 2026 · All data sourced from public information · Not investment advice · São Paulo<br>Sources: Serasa Experian · The AgriBiz · Valor Econômico · XP Investimentos · Poder360 · Farmdoc Daily (Illinois) · CSIS · Noria Research · AgFeed · Portal do Cooperativismo Financeiro · BAFI analysis</div>
+  </div>
+
+</div>
+</body>
+</html>
